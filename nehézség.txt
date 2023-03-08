@@ -1,0 +1,4 @@
+-sesseion login
+-regist kép
+- account profilképe
+-profil edit elhejezése nem jó navbarban

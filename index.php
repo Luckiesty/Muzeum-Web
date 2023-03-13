@@ -2,10 +2,10 @@
 session_start();
 class Login
 {
-    public mysqli $db_csatlakozas;
+    public $db_csatlakozas;
     function __construct()
     {
-        $this->db_csatlakozas = new mysqli("localhost", "root", "", "darkbluemon");
+        $this->db_csatlakozas = new mysqli("localhost", "root", "", "darkbluemoon");
     }
 
     function Bejelentkezes($nev, $jelszo)
@@ -52,6 +52,7 @@ if (isset($_POST["kijelentkezes"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>DARKBLUEMOON</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/animate.css">

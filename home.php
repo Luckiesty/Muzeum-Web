@@ -159,9 +159,7 @@ session_start();
 .section {
   margin-right: 30px;
   margin-left: 30px;
-}
-{
-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .intro-header {
   display: -webkit-box;

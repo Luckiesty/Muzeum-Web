@@ -2,10 +2,10 @@
 session_start();
 class Login
 {
-    public mysqli $db_csatlakozas;
+    public $db_csatlakozas;
     function __construct()
     {
-        $this->db_csatlakozas = new mysqli("localhost", "root", "", "darkbluemon");
+        $this->db_csatlakozas = new mysqli("localhost", "root", "", "darkbluemoon");
     }
 
     function Bejelentkezes($nev, $jelszo)
@@ -17,7 +17,7 @@ class Login
             $_SESSION["profilkep"] = $adatok["profilkep"];
             header("Location: ./home.php");
         } else {
-           echo "<script> alert('Sikertelen Bejentkezés! Próbál újra!'); windows.location='index.php'</script>";
+           echo "Sikertelen Bejentkezés! Próbál újra!";
         }
     }
     
@@ -55,6 +55,7 @@ if (isset($_POST["kijelentkezes"])) {
     <title>DARKBLUEMOON</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/animate.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 <body>
@@ -86,6 +87,9 @@ if (isset($_POST["kijelentkezes"])) {
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="elorhetosegeink.php">Elérhetőségeink</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="webshop.php">Souvenir</a>
                                         </li>
                                     
                                     </ul>

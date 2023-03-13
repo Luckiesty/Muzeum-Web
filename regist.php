@@ -4,7 +4,7 @@ class Regisztracio
     public mysqli $db_csatlakozas;
     function __construct()
     {
-        $this->db_csatlakozas = new mysqli("localhost", "root","", "darkbluemon");
+        $this->db_csatlakozas = new mysqli("localhost", "root","", "darkbluemoon");
     }
     function Regisztracio($felhasznalonev, $jelszo, $jelszo_ujra)
     {

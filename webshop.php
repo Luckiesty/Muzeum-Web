@@ -9,18 +9,18 @@
 </head>
 <body>
 <?php
-
-$termek_tomb = $conn->runQuery("SELECT * FROM termek_lista ORDER BY id ASC");
-if (!empty($termek_tomb)) { 
-	foreach($termek_tomb as $key=>$value){
+include("db_controller.php");
+$product_array = $conn->query("SELECT * FROM termek_lista ORDER BY id ASC");
+if (!empty($product_array)) { 
+	foreach($product_array as $key=>$value){
 ?>
-	<div class="termek-targy">
-		<form method="post" action="webshop.php?action=add&code=<?php echo $termek_tomb[$key]["code"]; ?>">
-		<div class="termek-kep"><img src="<?php echo $termek_tomb[$key]["kep"]; ?>"></div>
-		<div class="termek-lab">
-		<div class="termek-cim"><?php echo $termek_tomb[$key]["nev"]; ?></div>
-		<div class="termek-ar"><?php echo "$".$termek_tomb[$key]["ar"]; ?></div>
-		<div class="kosar-action"><input type="text" class="termek-menny" name="menny" value="1" size="2" /><input type="submit" value="Kosárhoz hozzáadás" class="btnAddAction" /></div>
+	<div class="product-item">
+		<form method="post" action="webshop.php?action=add&code=<?php echo $product_array[$key]["code"]; ?>">
+		<div class="product-image"><img src="<?php echo $product_array[$key]["image"]; ?>"></div>
+		<div class="product-tile-footer">
+		<div class="product-title"><?php echo $product_array[$key]["name"]; ?></div>
+		<div class="product-price"><?php echo "$".$product_array[$key]["price"]; ?></div>
+		<div class="cart-action"><input type="text" class="product-quantity" name="quantity" value="1" size="2" /><input type="submit" value="Add to Cart" class="btnAddAction" /></div>
 		</div>
 		</form>
 	</div>

@@ -87,10 +87,10 @@ if (isset($_POST["neve"]) && isset($_POST["jelszava"]) && isset($_POST["jelszouj
     <?php
 
 if(isset($_POST["submit"])) 
-{ $celmappa="profilkepek/";
+{ $celmappa="D:/PHP/Muzeum-Web/registracio-kep";
 
 
-    $kapcsolat = new mysqli("localhost", "root", "", "darkbluemon");
+    $kapcsolat = new mysqli("localhost", "root", "", "darkbluemoon");
     $lekerdezes = $kapcsolat->query("SELECT * from felhasznalok");
     $celfajl=$celmappa.basename($_FILES["feltolt"]["name"]);
     $sikeres=1;
@@ -149,7 +149,7 @@ if(isset($_POST["submit"]))
             }
         }
 
-        $indulo_mappa="profilkepek/";
+        $indulo_mappa="D:/PHP/Muzeum-Web/registracio-kep";
         $mappa_elemek=scandir($indulo_mappa);
         sort($mappa_elemek);
 

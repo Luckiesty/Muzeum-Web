@@ -110,22 +110,22 @@ if (isset($_POST["kijelentkezes"])) {
    
 if (!isset($_SESSION["neve"])) {
     ?>
-    <button class="open-button" onclick="openForm()">bejelentkezés</button>
+    
 
         <div class="form-popup" id="myForm">
-                <form method='post' class="form-container">
-                <h1>bejelentkezés</h1>
-
-                <label for="email"><b>név</b></label>
+                <form method='post' class="form-container" action="home.php">
+                <h1>Bejelentkezési Oldal</h1>
+                <br>
+                <label for="email"><b>Felhasználónév</b></label>
                 <input type="text" placeholder="név" name="neve" required>
-
-                <label for="psw"><b>jelszó</b></label>
+                <br>
+                <label for="psw"><b>Jelszó</b></label>
                 <input type="password" placeholder="jelszó" name="jelszava" required>
                 <a href="regist.php">Regisztráció</a>
                 <br>
                                             
-            <button type="submit" class="btn">Belép</button>               
-            <button type="button" class="btn cancel" onclick="closeForm()">Bezárás</button>
+            <button type="submit" class="btn">Bejelentkezés</button>               
+            
         </form>
     </div>
     <?php

@@ -87,7 +87,7 @@ if (isset($_POST["neve"]) && isset($_POST["jelszava"]) && isset($_POST["jelszouj
     <?php
 
 if(isset($_POST["submit"])) 
-{ $celmappa="D:/PHP/Muzeum-Web/registracio-kep";
+{ $celmappa="D:/PHP/Muzeum-Web/registracio-kep/";
 
 
     $kapcsolat = new mysqli("localhost", "root", "", "darkbluemoon");
@@ -133,11 +133,13 @@ if(isset($_POST["submit"]))
 
             print("Sikertelen feltöltés. Próbálja újra!");
             }
-            
+
             else{
                if (move_uploaded_file ($_FILES["feltolt"]["tmp_name"], $celfajl)) {
-
-                $sql = "UPDATE felhasznalok  SET profilkep =('".$celfajl."') WHERE neve = '".$nev."'" ;
+                $keplista = explode("/", $celfajl);
+                end($keplista);
+                $fajlnev = $keplista[key($keplista)]; 
+                $sql = ("UPDATE felhasznalok  SET profilkep =('".$fajlnev."') WHERE neve = '".$nev."'");
     if ($kapcsolat->query($sql) === TRUE) {
        echo "New record created successfully";
      } else {
@@ -149,7 +151,7 @@ if(isset($_POST["submit"]))
             }
         }
 
-        $indulo_mappa="D:/PHP/Muzeum-Web/registracio-kep";
+        $indulo_mappa="D:/PHP/Muzeum-Web/registracio-kep/";
         $mappa_elemek=scandir($indulo_mappa);
         sort($mappa_elemek);
 

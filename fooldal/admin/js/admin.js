@@ -27,6 +27,7 @@ $('.fris').on('click' ,function(e)
                 })
             });
 
+<<<<<<< HEAD
         $('.jegyfris').on('click' ,function(e)
         {
             e.preventDefault();
@@ -58,6 +59,8 @@ $('.fris').on('click' ,function(e)
 
             
 
+=======
+>>>>>>> 32ff1c5bf554a6bd9aaabc5bdabb53fa977462d4
         $('#kereses').keyup(function(e)
         {
             e.preventDefault();
@@ -77,10 +80,16 @@ $('.fris').on('click' ,function(e)
                     });
 
 
+<<<<<<< HEAD
                     
             $('.torles').on('click' ,function(a)
         {
             const href= $(this).attr('href');
+=======
+            $('.torles').on('click' ,function(a)
+        {
+            
+>>>>>>> 32ff1c5bf554a6bd9aaabc5bdabb53fa977462d4
             a.preventDefault();
             Swal.fire({
                 title: 'Biztos törlöni akarod?', 
@@ -92,6 +101,7 @@ $('.fris').on('click' ,function(e)
                 }).then((result) => { 
                     if (result.value) 
                     {
+<<<<<<< HEAD
                         document.location.href = href;
                     }
                 })
@@ -117,3 +127,10 @@ $('.fris').on('click' ,function(e)
     
 
                
+=======
+                        window.location  = "torles.php"
+                    }
+                })
+            })
+                
+>>>>>>> 32ff1c5bf554a6bd9aaabc5bdabb53fa977462d4

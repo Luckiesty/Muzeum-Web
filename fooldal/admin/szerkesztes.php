@@ -1,4 +1,8 @@
 <?php
+<<<<<<< HEAD
+=======
+
+>>>>>>> 32ff1c5bf554a6bd9aaabc5bdabb53fa977462d4
     session_start();
     $id = $_GET['id'];
     $nevfris = $_POST['nevfris'];

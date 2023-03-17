@@ -20,6 +20,7 @@ session_start();
         <link rel="stylesheet" href="css/animate.css">
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         
 </head>
 <body>
@@ -51,11 +52,11 @@ session_start();
                                         <li class="nav-item">
                                             <a class="nav-link" href="elorhetosegeink.php">Elérhetőségeink</a>
                                         </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="webshop.php">Souvenir Bolt</a>
+                                        </li>
                                         <li  class="nav-item">
-                                            <div  id="profil-keret">       
-                                               
-
-                                                
+                                            <div  id="profil-keret">
                                                 <?php 
                                                     print('<img class="profilkep1 menu-btn>"  src="'.$_SESSION['profilkep'].'" alt=""> ');
                                                 ?>
@@ -155,106 +156,7 @@ session_start();
 
 
 </script>
-<style>
-.section {
-  margin-right: 30px;
-  margin-left: 30px;
-  box-sizing: border-box;
-}
-.intro-header {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 620px;
-  margin-bottom: 100px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background-color: #f4f4f4;
-  background-image: url("kepek/nebulakod.jpg");
-  background-position: 0px 0px;
-  background-size: cover;
-  background-repeat: repeat;
-  background-attachment: fixed;
-  color: #fff;
-}
-.intro-header {
-  color: #fff;
-}
-.button.cc-jumbo-button.cc-jumbo-white {
-  background-color: #fff;
-  color: #000;
-}
-.button.cc-jumbo-button {
-  padding: 16px 35px;
-  font-size: 14px;
-  line-height: 26px;
-}
-.button {
-  padding: 12px 25px;
-  border-radius: 0px;
-  background-color: #1a1b1f;
-  -webkit-transition: background-color 400ms ease, opacity 400ms ease, color 400ms ease;
-  transition: background-color 400ms ease, opacity 400ms ease, color 400ms ease;
-  color: #fff;
-  font-size: 12px;
-  line-height: 20px;
-  letter-spacing: 2px;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-.w-inline-block {
-  max-width: 100%;
-  display: inline-block;
-}
-a {
-  display: block;
-  -webkit-transition: opacity 200ms ease;
-  transition: opacity 200ms ease;
-  color: #1a1b1f;
-  text-decoration: underline;
-}
-a {
-  background-color: transparent;
-}
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.intro-content {
-  text-align: center;
-}
-.intro-header {
-  color: #fff;
-}
-.button.cc-jumbo-button.cc-jumbo-white {
-  color: #000;
-}
 
-.button.cc-jumbo-button {
-  font-size: 14px;
-  line-height: 26px;
-}
-.button {
-  color: #fff;
-  font-size: 12px;
-  line-height: 20px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-.intro-content {
-  text-align: center;
-}
-
-</style>
-      
     <script src="css/javascript.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
 

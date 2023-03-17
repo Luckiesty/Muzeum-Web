@@ -89,10 +89,6 @@ if (isset($_POST["kijelentkezes"])) {
                                         <li class="nav-item">
                                             <a class="nav-link" href="elorhetosegeink.php">Elérhetőségeink</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="webshop.php">Souvenir</a>
-                                        </li>
-                                    
                                     </ul>
                                     
                                 </div>
@@ -109,7 +105,8 @@ if (isset($_POST["kijelentkezes"])) {
 
 <?php 
    
-if (!isset($_SESSION["neve"])) {
+if (!isset($_SESSION["neve"])) 
+{
     ?>
     
 
@@ -130,14 +127,9 @@ if (!isset($_SESSION["neve"])) {
         </form>
     </div>
     <?php
-     
-        }    
-              
-        
-        else
-        {  
-            
-                                   
+}    
+else
+{  
     ?>
     <div id="profil-keret">
         <?php
@@ -154,8 +146,8 @@ if (!isset($_SESSION["neve"])) {
         <button type="submit" name="kijelentkezes" >Kilépt</button>
         </form>
         <?php
-        }
-        ?>
+}
+?>
                                         
 <script src="css/javascript.js"></script>
 <script

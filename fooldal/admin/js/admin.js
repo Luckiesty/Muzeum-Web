@@ -128,7 +128,7 @@ $('.fris').on('click' ,function(e)
                                 var posting = $.post( url, {nev:nev } );
         
                                 posting.done(function( data ) {
-                                    $("#tablazat").html(data);
+                                    $("#").html(data);
                                    
                                 });
                             }

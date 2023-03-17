@@ -76,29 +76,14 @@
         </div>
     </div>
     <div class="container2"  id="tablazat">
-    <div class="jegyhozzbtn">
-    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
-    eventletrehozzas
-</button>    
+       
 
     
 <?php include('eventtabla.php'); ?></div>
 </div>
 
     <?php
-    if(isset($_GET['id']))
-    {
-        $id = $_GET['id'];
-        if($id>0)
-        {
-            print(' <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
-            eventletrehozzas
-        </button>    
-        ');
-            
-        }
-        
-    }
+    
   
     ?>
     
@@ -112,7 +97,16 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- Button to trigger modal -->
 
- 
+<?php
+    
+  if(!isset($_GET['id']))
+  {
+    
+    ?>
+    <div class="jegyhozzbtn">
+    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
+    eventletrehozzas
+</button> 
 <!-- Modal -->
 <div class="modal fade" id="modalForm" role="dialog">
     <div class="modal-dialog">
@@ -125,7 +119,6 @@
                 </button>
                 <h4 class="modal-title" id="myModalLabel">eventletrehozzas</h4>
             </div>
-             
             <!-- Modal Body -->
             <div class="modal-body">
                 <p class="statusMsg"></p>
@@ -136,7 +129,7 @@
                     </div>
                     <div class="form-group">
                         <label >időpont</label>
-                        <input type="datetime-local" id="idopont" name="idopont" >
+                        <input type="date" id="idopont" name="idopont" >
                     <div class="form-group">
                       <label  class="control-label">leiras</label>							
                       <textarea class="form-control" rows="5" id="leiras" name="leiras"></textarea>							
@@ -197,7 +190,11 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<!-- Bootstrap JS -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+    <?php
+    
+                            }
+    ?>
+    
 
     <script>
         (document).ready(function(){

@@ -34,22 +34,75 @@ $kapcsolat = new mysqli("localhost", "root", "", "darkbluemoon");
                         <td>'.$sor['ferohely'].'</td>
                         <td>'.$sor['statusz'].'</td>
                         <td><span class="text">'.$sor['kep'].'</span></td>
-                        </form>
+                      
                         <td> <a name="szerkesztes" class="szerk" href="?id='.$sor['id'].'">szerkesztés</a>
-                        
+                    
+        Name: <input type="text"  value="'.$sor['id'].'" name="name" 
+        id="name"><br><br>
+  
+ 
+
+    <button type="button" class="btn btn-primary 
+        btn-sm" data-toggle="modal" 
+        data-target="#exampleModal"
+        id="submit">
+        Submit
+    </button>
+       
                         </a>  </td>
                         </tr>';
                         
                     }
-                    $id = $_GET['id'];
+                    
 
                     print($tartalom);
-
+                    $id = $_GET['id'];
                     print "
                     </tbody></table>";       
-                    if(isset($_GET['id'])){
+                    
                         
 ?>
+<div class="modal fade" id="exampleModal" 
+      tabindex="-1" 
+      aria-labelledby="exampleModalLabel" 
+      aria-hidden="true">
+        
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" 
+                      id="exampleModalLabel">
+                      Confirmation
+                  </h5>
+                    
+                  <button type="button" 
+                      class="close" 
+                      data-dismiss="modal" 
+                      aria-label="Close">
+                      <span aria-hidden="true">
+                          ×
+                      </span>
+                  </button>
+              </div>
+
+              <div class="modal-body">
+
+                  <!-- Data passed is displayed 
+                      in this part of the 
+                      modal body -->
+                  <h6 id="modal_body"></h6>
+                  <button type="button" 
+                      class="btn btn-success btn-sm" 
+                      data-toggle="modal"
+                      data-target="#exampleModal" 
+                      id="submit">
+                      Submit
+                  </button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -70,92 +123,49 @@ $kapcsolat = new mysqli("localhost", "root", "", "darkbluemoon");
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
  <!-- Button to trigger modal -->
  <h1>DSadDSad</h1>
-    <?php
-     if(isset($_GET['id']))
-     {
-     $lekerdezes2 = $kapcsolat->query("select * from events where id=".$id."");
-     if($sor = $lekerdezes2->fetch_assoc()){
-        ?>
-       <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm" data-id="2">
-       eventletrehozzas
-        </button>    
-<!-- Modal -->
-<div class="modal fade" id="modalForm" role="dialog">
-<div class="modal-dialog">
-    <div class="modal-content">
-        <!-- Modal Header -->
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">
-                <span aria-hidden="true">×</span>
-                <span class="sr-only">Close</span>
-            </button>
-            <h4 class="modal-title" id="myModalLabel">eventletrehozzas</h4>
-        </div>
-         
-        <!-- Modal Body -->
-        <div class="modal-body">
-            <p class="statusMsg"></p>
-            <form method="post" action="eventszerkesztes.php" id="insert_form" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label >Név</label>
-                    <input type="text" class="form-control"  name="nev" id="nev" value="<?php echo $sor['event']?>">
-                </div>
-                
-                <div class="form-group">
-                    <label >időpont</label>
-                    <input type="datetime-local" id="idopont" name="idopont"  value="<?php echo $sor['mikor']?>">
-                <div class="form-group">
-                  <label  class="control-label">leiras</label>							
-                  <textarea class="form-control" rows="5" id="leiras" name="leiras" ><?php echo $sor['leiras']?></textarea>							
-                </div>	
-                <div class="form-group">
-                    <label >férőhely</label>
-                    <input type="number"class="form-control" id="ferohely"  value="<?php echo $sor['ferohely']?>" name="ferohely" />
-                </div>
-                <div class="form-group">
-                    <label >statusz</label>
-                    <select id="statusz" name="statusz"  value="<?php echo $sor['statusz']?>">
-                    <option value="privat">Privat</option>
-                    <option value="privat">publikus</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label >kep</label>
-                    <input  class="form-control" type="file" name="feltolt" id="feltolt"  value="<?php echo $sor['kep']?>">
-                <div class="form-group">
-                <div class="form-group">
-                    <label >tipus</label>
-                    <select id="tipus" name="tipus">
-                        <?php
-                      
-                      $kapcsolat = new mysqli("localhost", "root", "", "darkbluemoon");
-                      $lekerdezes = $kapcsolat->query("select * from jegytipus");
-                      $tartalom ="";
-                          while($sor = $lekerdezes->fetch_assoc()){
-                            $tartalom .='<option value="'.$sor['nev'].'">'.$sor['nev'].'</option>';
-                          }
-                          echo $tartalom;
-                     ?>
-                    </select>
-                </div>
+ <div class="container mt-2">
+  
+  
 
-            </form>
-        </div>
-         
-        <!-- Modal Footer -->
-        <div class="modal-footer">
-            <button type="button"  class="btn btn-default" data-dismiss="modal">Close</button>
-            <input type="submit"  name="insert" id="insert" value="Insert" class="btn btn-success"/>
-        </div>
-    </div>
-</div>
-</div>
 
+  
+
+<link rel="stylesheet" href=
+"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity=
+"sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+        crossorigin="anonymous">
+  
+    <!-- Import jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity=
+"sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous">
+    </script>
+      
+    <script src=
+"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity=
+"sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous">
+    </script>
+<script>
+    var myRoomNumber;
+
+    $("#submit").click(function () {
+            var name = $("#name").val();
+          
+            var str = "You Have Entered " 
+                + "Name: " + name 
+                + " and Marks: " + marks;
+            $("#modal_body").html(str);
+        });
+</script>
 <?php
  
-        }
-     }
-    }
+        
+     
+    
     ?>
 </body>
 </html>

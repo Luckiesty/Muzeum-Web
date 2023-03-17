@@ -65,7 +65,7 @@ if(!empty($_GET["muvelet"]))
 <div id="bevasarlo-kocsi">
 <div class="txt-heading">Kosár</div>
 
-<a id="btnEmpty" href="index.php?action=empty">Üres kosár</a>
+
 <?php
 if(isset($_SESSION["kosar_targyak"]))
 {
@@ -117,5 +117,24 @@ if(isset($_SESSION["kosar_targyak"]))
 }
 ?>
 </div>
+<?php
+$product_array = $db_handle->runQuery("SELECT * FROM termek_tabla ORDER BY id ASC");
+if (!empty($product_array)) { 
+	foreach($product_array as $key=>$value){
+?>
+	<div class="product-item">
+		<form method="post" action="index.php?action=add&code=<?php echo $product_array[$key]["termek_kod"]; ?>">
+		<div class="product-image"><img src="<?php echo $product_array[$key]["termek_kep"]; ?>"></div>
+		<div class="product-tile-footer">
+		<div class="product-title"><?php echo $product_array[$key]["termek_nev"]; ?></div>
+		<div class="product-price"><?php echo "$".$product_array[$key]["termek_ar"]; ?></div>
+		<div class="cart-action"><input type="text" class="product-quantity" name="mennyiseg" value="1" size="2" /><input type="submit" value="Kosárhoz hozzáadás" class="btnAddAction" /></div>
+		</div>
+		</form>
+	</div>
+<?php
+	}
+}
+?>
 </body>
 </html>

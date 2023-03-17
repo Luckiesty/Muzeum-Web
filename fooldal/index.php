@@ -101,7 +101,6 @@ if (isset($_POST["kijelentkezes"])) {
 </head>
 <body>
     
-<<<<<<< HEAD
 <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navigation w-nav">
             <div class="navigation-wrap">
                 <a href="/" aria-current="page" class="logo-link w-nav-brand w--current">
@@ -128,45 +127,6 @@ if (isset($_POST["kijelentkezes"])) {
                     </nav>
                     <div class="menu-button w-nav-button">
                         <img src="https://uploads-ssl.webflow.com/6404dcc77e2407dfb2f3ed83/6404dcc77e24072791f3eda8_menu-icon.png" width="22" alt="" class="menu-icon"/>
-=======
-<header class="continer-fluid ">
-            <div class="header-bottom">
-                <div class="container">
-                    <div class="row nav-row">
-                        <div class="col-md-3">
-                            <img class="fologo" src="kepek/fologo.png" alt="">
-                        </div>
-                        <div class="col-md-9 nav-col">
-                            <nav class="navbar navbar-expand-lg navbar-light">
-
-                              
-                                <div class="collapse navbar-collapse" id="navbarNav">
-                                    <ul class="navbar-nav">
-                                        <li>
-                                            <a class="nav-link" href="index.php">Főoldal</a>
-                                        </li>
-                                        <li >
-                                            <a class="nav-link" href="Rolunk.php">Rolunk</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="kategoriak.php">Kategóriák</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="videok.php">Videók</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="elorhetosegeink.php">Elérhetőségeink</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="webshop.php">Souvenir</a>
-                                        </li>
-                                    
-                                    </ul>
-                                    
-                                </div>
-                            </nav>
-                        </div>
->>>>>>> a49e2c7affc9c2f3282395ea073a45b068ae1cb4
                     </div>
                 </div>
             </div>

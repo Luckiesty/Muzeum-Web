@@ -4,9 +4,9 @@ class Regisztracio
     public mysqli $db_csatlakozas;
     function __construct()
     {
-        $this->db_csatlakozas = new mysqli("localhost", "root","", "darkbluemon");
+        $this->db_csatlakozas = new mysqli("localhost", "root","", "darkbluemoon");
     }
-    function Regisztracio($felhasznalonev, $jelszo, $jelszo_ujra)
+    function Regisztracio($felhasznalonev,$email, $jelszo, $jelszo_ujra)
     {
         $felhasznalo_adas= $this->db_csatlakozas->query("SELECT * FROM felhasznalok WHERE neve = '" . $felhasznalonev . "'");
         if ($adatok = $felhasznalo_adas->fetch_assoc()) {
@@ -16,7 +16,7 @@ class Regisztracio
                 if ($jelszo === $jelszo_ujra) { {
                     $jelszo = md5($jelszo);
                     
-                            $this->db_csatlakozas->query("INSERT INTO felhasznalok (`neve`, `jelszava`) VALUES ('" . $felhasznalonev . "', '" . $jelszo . "');");
+                            $this->db_csatlakozas->query("INSERT INTO felhasznalok (`neve`, `jelszava`,email) VALUES ('" . $felhasznalonev . "', '" . $jelszo . "', '" . $email. "');");
                 header("Location: ./index.php");
             }
         }
@@ -28,8 +28,8 @@ class Regisztracio
 }
 
 $peldanyositas_regisztracio = new Regisztracio();
-if (isset($_POST["neve"]) && isset($_POST["jelszava"]) && isset($_POST["jelszoujra"]) ) {
-    $peldanyositas_regisztracio->Regisztracio($_POST["neve"], $_POST["jelszava"], $_POST["jelszoujra"]);
+if (isset($_POST["neve"]) && isset($_POST["email"]) && isset($_POST["jelszava"]) && isset($_POST["jelszoujra"]) ) {
+    $peldanyositas_regisztracio->Regisztracio($_POST["neve"], $_POST["email"], $_POST["jelszava"], $_POST["jelszoujra"]);
 }
 ?>
 
@@ -60,6 +60,11 @@ if (isset($_POST["neve"]) && isset($_POST["jelszava"]) && isset($_POST["jelszouj
                 <input  class="form-control" type="text" name="neve"></input>
                 </div>
                 <br>
+                <div class="mb-3">
+                <label>email</label>
+                <br>
+                <input  class="form-control" type="email" name="email"></input>
+                </div>
             <div class="mb-3">
                 <label>Jelszó:</label>
                 <br>

@@ -17,6 +17,37 @@ if(!empty($_GET["muvelet"]))
 					'termek_kep' => $productByCode[0]["termek_kep"]
 				));
 			}
+
+			if(!empty($_SESSION["kosar_targyak"])) {
+				if(in_array($productByCode[0]["termek_kod"],array_keys($_SESSION["kosar_targyak"]))) {
+					foreach($_SESSION["kosar_targyak"] as $k => $v) {
+							if($productByCode[0]["termek_kod"] == $k) {
+								if(empty($_SESSION["kosar_targy"][$k]["mennyiseg"])) {
+									$_SESSION["kosar_targyak"][$k]["mennyiseg"] = 0;
+								}
+								$_SESSION["kosar_targyak"][$k]["mennyiseg"] += $_POST["mennyiseg"];
+							}
+					}
+				} else {
+					$_SESSION["kosar_targyak"] = array_merge($_SESSION["kosar_targyak"],$itemArray);
+				}
+			} else {
+				$_SESSION["kosar_targyak"] = $itemArray;
+			}
+			break;
+			case "eltavolitas":
+				if(!empty($_SESSION["kosar_targyak"])) {
+					foreach($_SESSION["kosar_targyak"] as $k => $v) {
+						if($_GET["termek_kod"] == $k)
+							unset($_SESSION["kosar_targyak"][$k]);				
+						if(empty($_SESSION["kosar_targyak"]))
+							unset($_SESSION["kosar_targyak"]);
+					}
+				}
+				break;
+			case "ures":
+				unset($_SESSION["kosar_targyak"]);
+					break;
 	}
 }
 ?>
@@ -31,6 +62,60 @@ if(!empty($_GET["muvelet"]))
     <title>Webshop</title>
 </head>
 <body>
+<div id="bevasarlo-kocsi">
+<div class="txt-heading">Kosár</div>
 
+<a id="btnEmpty" href="index.php?action=empty">Üres kosár</a>
+<?php
+if(isset($_SESSION["kosar_targyak"]))
+{
+    $total_quantity = 0;
+    $total_price = 0;
+?>	
+<table class="tbl-cart" cellpadding="10" cellspacing="1">
+<tbody>
+<tr>
+<th style="text-align:left;">Név</th>
+<th style="text-align:left;">Kód</th>
+<th style="text-align:right;" width="5%">Mennyiség</th>
+<th style="text-align:right;" width="10%">Egységár</th>
+<th style="text-align:right;" width="10%">Ár</th>
+<th style="text-align:center;" width="5%">Eltávolítás</th>
+</tr>	
+<?php		
+    foreach ($_SESSION["kosar_targyak"] as $item){
+        $item_price = $item["mennyiseg"]*$item["termek_ar"];
+		?>
+				<tr>
+				<td><img src="<?php echo $item["termek_kep"]; ?>" class="cart-item-image" /><?php echo $item["termek_nev"]; ?></td>
+				<td><?php echo $item["code"]; ?></td>
+				<td style="text-align:right;"><?php echo $item["mennyiseg"]; ?></td>
+				<td  style="text-align:right;"><?php echo "$ ".$item["termek_ar"]; ?></td>
+				<td  style="text-align:right;"><?php echo "$ ". number_format($item_price,2); ?></td>
+				<td style="text-align:center;"><a href="index.php?action=remove&code=<?php echo $item["code"]; ?>" class="btnRemoveAction"><img src="icon-delete.png" alt="Eltávolítás" /></a></td>
+				</tr>
+				<?php
+				$total_quantity += $item["mennyiseg"];
+				$total_price += ($item["termek_ar"]*$item["mennyiseg"]);
+		}
+		?>
+
+<tr>
+<td colspan="2" align="right">Végösszeg:</td>
+<td align="right"><?php echo $total_quantity; ?></td>
+<td align="right" colspan="2"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>		
+  <?php
+} else 
+{
+?>
+<div class="no-records">A kosár üres.</div>
+<?php 
+}
+?>
+</div>
 </body>
 </html>

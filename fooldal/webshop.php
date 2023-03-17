@@ -1,6 +1,6 @@
 <?php 
 require_once("db_controller.php");
-$db_kezeles = $conn();
+$db_handle = new DB_Kontroller();
 if(!empty($_GET["muvelet"]))
 {
 	switch($_GET["muvelet"])
@@ -8,7 +8,14 @@ if(!empty($_GET["muvelet"]))
 		case "hozzaadas":
 			if(!empty($_POST["mennyiseg"]))
 			{
-				$termek_Kodbol = $db_kezeles->runQuery();
+				$productByCode = $db_handle->runQuery("SELECT * FROM termek_tabla WHERE termek_kod='". $_GET["termek_kod"]. "'");
+				$itemArray = array($productByCode[0]["termek_kod"] => array(
+					'termek_nev' => $productByCode[0]["termek_nev"],
+					'termek_kod' => $productByCode[0]["termek_kod"],
+					'mennyiseg' => $_POST["mennyiseg"],
+					'termek_ar' => $productByCode[0]["termek_ar"],
+					'termek_kep' => $productByCode[0]["termek_kep"]
+				));
 			}
 	}
 }

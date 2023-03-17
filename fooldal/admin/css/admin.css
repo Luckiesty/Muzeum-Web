@@ -19,9 +19,6 @@
     top: 280px;
     width: 100px;
     left: 20%;
-    
-    
-    
 }
 table, th, td {
   border: 1px solid black;
@@ -29,30 +26,32 @@ table, th, td {
 }
 .szerkesztes2
 {
-    background-color:seashell;
-    position: relative;
-    top: -170px;
-    left: 600px;
-    width: 400px;
-    text-align: center;
-    display: flex;
-  flex-direction: column;
-  width: 25vw;
+  background-color:seashell;
+  position: relative;
+bottom: 300px;
+  left: 600px;
+  width: 400px;
+  text-align: center;
+  display: flex;
+flex-direction: column;
+width: 25vw;
+
 
 }
-.szerkesztes
+.szerkesztes3
 {
-    background-color:seashell;
-    position: relative;
-    top: 120px;
-    left: 850px;
-    width: 400px;
-    text-align: center;
-    display: flex;
-  flex-direction: column;
-  width: 25vw;
+  background-color:seashell;
+  position: relative;
+  left: 1050px;
+  width: 400px;
+  text-align: center;
+  display: flex;
+flex-direction: column;
+width: 25vw;
+
 
 }
+
 form {
   display: flex;
   flex-direction: column;
@@ -76,4 +75,48 @@ button {
 }
 div { 
   display: block;
+}
+
+/* ===================================== jegyek ================================== */
+/* ===================================== tablak ================================== */
+.text {
+  display: block;
+  width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+   
+.styled-table {
+ 
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 300px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
 }

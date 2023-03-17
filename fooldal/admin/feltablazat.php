@@ -1,20 +1,20 @@
 <?php
 session_start();
 $kapcsolat = new mysqli("localhost", "root", "", "darkbluemoon");
-        $lekerdezes = $kapcsolat->query("select * from felhasznalok WHERE id!=".$_SESSION['id']."");
+$lekerdezes = $kapcsolat->query("select * from felhasznalok WHERE id!=".$_SESSION['id']."");
 
     
        
 
   $tartalom = "";
         print(' 
-                <table style="width:100%">
-            <tr>
+                <table style="width:100%" class="styled-table">
+            <thead><tr>
                 <th>ID</th>
                 <th>NÉV</th>
                 <th>EMAIL</th>
                 <Th>statusz</Th>
-            </tr>');
+            </tr> </thead><tbody>');
             
                     while($sor = $lekerdezes->fetch_assoc()){
                         $tartalom .='
@@ -25,15 +25,14 @@ $kapcsolat = new mysqli("localhost", "root", "", "darkbluemoon");
                         <td>'.$sor['statusz'].'</td>
                         <form method="post">
                         <td><a name="szerkesztes" href="?id='.$sor['id'].'">Szerkesztés</a></td>
-                        <td><button name="torles" class="torles" type="submit">torles</button></td>
                         </form>
                         </tr>';
                         
                     }
-                    print($tartalom);
-
-                    print "</table>";
-
+                    
+print($tartalom);
+                    print "</tbody></table>";
+                  
 
 
 ?>

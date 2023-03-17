@@ -10,5 +10,4 @@
     {
         die("Adatbázishoz való csatlakozás sikertelen volt." . $conn->connect_error);
     }
-    echo "Sikeres volt a csatlakozás.";
 ?>

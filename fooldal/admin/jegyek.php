@@ -75,75 +75,50 @@
             </div>
         </div>
     </div>
-
     
-    <?php
-        $kapcsolat = new mysqli("localhost", "root", "", "darkbluemoon");
-        $lekerdezes = $kapcsolat->query("select * from jegytipus ");
-        $tartalom = "";
+    <div class="jegyhozzbtn">
 
+    <div class="container2" id="tablazat">
+    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
+   Jegyhozzáaddás
+</button>    
+    <?php include('jegytabla.php'); ?>
     
-       
+    
 
-  
-        print(' <div class="container2">
-                <table style="width:100%">
-            <tr>
-                <th>ID</th>
-                <th>NÉV</th>
-                <th>TIPUS</th>
-                <Th>ÁR</Th>
-            </tr>');
-            
-                    while($sor = $lekerdezes->fetch_assoc()){
-                        $tartalom .='
-                        <tr>
-                        <td>'.$sor['jegy_id'].'</td>
-                        <td>'.$sor['nev'].'</td>
-                        <td>'.$sor['tipus'].'</td>
-                        <td>'.$sor['ar'].'</td>
-                        <form method="post">
-                        <td><a name="szerkesztes" href="?id='.$sor['jegy_id'].'">Szerkesztés</a></td>
-                        <td><button name="torles" class="torles" type="submit">torles</button></td>
-                        </form>             
-                        </tr>';
-                        
-                    }
-                    print($tartalom);
-                    print("</table>   
-                    </div>");
-                    
-                if(isset($_GET['id']))
-                {
-                    $id = $_GET['id'];
-                                     
-    ?>
-   
     <?php
+    if(isset($_GET['id']))
+    {
+        $id = $_GET['id'];
         if($id>0)
         {
             $lekerdezes2 = $kapcsolat->query("select * from jegytipus where jegy_id=".$id."");
             if($sor = $lekerdezes2->fetch_assoc()){
-            print('<div class="szerkesztes">
-            <form method="post">
+            print('<div class="szerkesztes2">
+            <form method="post" id="jegyszek" action="jegyszerkesztes.php?id='.$id.'">
             <h2>Szerkesztés</h2>
                                 <label>nev</label>
                                 <input type="text" name="jnevfris" value="'.$sor['nev'].'" id="nev"><br>
                                 <label >tipus</label>
                                 <input type="text" name="tipusfris" value="'.$sor['tipus'].'" id="tipus"><br>
                                 <label >ár</label>
-                                <input type="text" name="ar" value="'.$sor['ar'].'" id="ar"><br>
-                                <button name="feltolt" class="fris" type="submit">mentés</button>
+                                <input type="text" name="frisar" value="'.$sor['ar'].'" id="ar"><br>
+                                <a name="szerkesztes" class="jegytorles" href="jegytorles.php?id='.$id.'">Törlés</a>
+                                <button name="feltolt" class="jegyfris" type="submit">mentés</button>
                         </form>
-                       
+                        
                         </div> ');
             }
-      
+            
         }
+        
     }
 
             
     ?>
+    </div>
+    </div>
+    
 <!-- Latest minified bootstrap css -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  
@@ -153,9 +128,7 @@
 <!-- Latest minified bootstrap js -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- Button to trigger modal -->
-<button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
-   Jegyhozzáaddás
-</button>
+
  
 <!-- Modal -->
 <div class="modal fade" id="modalForm" role="dialog">
@@ -167,7 +140,7 @@
                     <span aria-hidden="true">×</span>
                     <span class="sr-only">Close</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">Contact Form</h4>
+                <h4 class="modal-title" id="myModalLabel">Jegyhozzáaddás</h4>
             </div>
              
             <!-- Modal Body -->
@@ -175,16 +148,16 @@
                 <p class="statusMsg"></p>
                 <form method="post" action="jegyekmentes.php" id="insert_form" >
                     <div class="form-group">
-                        <label for="inputName">Name</label>
-                        <input type="text" class="form-control"  name="nev" id="nev" placeholder="Enter your name"/>
+                        <label >Név</label>
+                        <input type="text" class="form-control"  name="nev" id="nev" placeholder="Add meg a nevét"/>
                     </div>
                     <div class="form-group">
-                        <label for="">Email</label>
-                        <input type="text" class="form-control"  name="tipus" id="tipus" placeholder="Enter your email"/>
+                        <label >Tipus</label>
+                        <input type="text" class="form-control"  name="tipus" id="tipus" placeholder="Add meg a tipusát"/>
                     </div>
                     <div class="form-group">
-                        <label for="inputMessage">Message</label>
-                        <textarea class="form-control" id="ar" name="ar" placeholder="Enter your message"></textarea>
+                        <label >ÁR</label>
+                        <input type="text"class="form-control" id="ar" name="ar" placeholder="Add meg az árát"/>
                     </div>
                 
                     <input type="submit"  name="insert" id="insert" value="Insert" class="btn btn-success" onclick="adduser()" />
@@ -243,12 +216,6 @@
 
 
 </script>
-                    
-   
 
-
-<style>
-
-</style>
 </body>
 </html>

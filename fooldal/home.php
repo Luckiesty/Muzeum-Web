@@ -69,7 +69,7 @@ session_start();
                         <a href="programok.php" class="navigation-item w-nav-link">Programok</a>
                         <a href="/blog" class="navigation-item w-nav-link">Gyűjtemények</a>
                         <a href="/contact" class="navigation-item w-nav-link">Elérhetőségeink</a> 
-                        <a href="webshop.php" class="navigation-item w-nav-link">Múzeumshop</a> 
+                        
                     <?php 
                       if(isset($_SESSION['neve']))
                       {
@@ -132,7 +132,7 @@ session_start();
                 <div class="intro-content cc-homepage">
                     <div><h1>Tudományos és Csillagászati Muzeum</h1></div>
                     <div class="intro-text"></div>
-                    <a href="/about" class="button cc-jumbo-button cc-jumbo-white w-inline-block">
+                    <a href="/about" class="button cc-jumbo-button cc-jumbo-black w-inline-block">
                         <div>tudj meg többet</div>
                     </a>
                 </div>
@@ -242,7 +242,6 @@ session_start();
         
 
 
-<<<<<<< HEAD
 
         
         <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6404dcc77e2407dfb2f3ed83" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
@@ -252,9 +251,6 @@ session_start();
 </script>
 
       
-=======
-</script>
->>>>>>> a49e2c7affc9c2f3282395ea073a45b068ae1cb4
     <script src="css/javascript.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
 

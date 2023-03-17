@@ -241,6 +241,7 @@ session_start();
         
 
 
+<<<<<<< HEAD
 
         
         <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6404dcc77e2407dfb2f3ed83" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
@@ -250,6 +251,9 @@ session_start();
 </script>
 
       
+=======
+</script>
+>>>>>>> a49e2c7affc9c2f3282395ea073a45b068ae1cb4
     <script src="css/javascript.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
 

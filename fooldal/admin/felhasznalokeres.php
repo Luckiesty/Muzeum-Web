@@ -61,12 +61,8 @@
                         <nav role="navigation" class="navigation-items w-nav-menu">
                             <a href="adminfelulet.php" class="navigation-item w-nav-link">felhasznalok</a>
                             <a href="felhasznalokeres.php" class="navigation-item w-nav-link">felhasznalo kereses</a>    
-<<<<<<< HEAD
                             <a href="jegyek.php" class="navigation-item w-nav-link">jegyfajtak</a>  
                             <a href="programok.php" class="navigation-item w-nav-link">programok</a>                                         
-=======
-                            <a href="jegyek.php" class="navigation-item w-nav-link">jegyfajtak</a>                                       
->>>>>>> 32ff1c5bf554a6bd9aaabc5bdabb53fa977462d4
                         </nav>
                     <div class="menu-button w-nav-button">
                         <img src="https://uploads-ssl.webflow.com/6404dcc77e2407dfb2f3ed83/6404dcc77e24072791f3eda8_menu-icon.png" width="22" alt="" class="menu-icon"/>
@@ -77,7 +73,6 @@
     </div>
  
    
-<<<<<<< HEAD
     
    
     <div >
@@ -87,7 +82,7 @@
     </div>  
      <div class="container2" id="tablazat">
       
-     <?php include("kerestabla.php"); ?>
+     <?php include("kerestabla.php"); ?> </div>
             
     
     <?php
@@ -95,22 +90,6 @@
          if(isset($_GET['id']))
          {
              $id = $_GET['id'];
-=======
-   
-    
-    
-     <div class="keresgomb">
-        <form  method="post"  id="keres" action="kerestabla.php">
-            <input type="text" placeholder="kereses" id="kereses" name="nev" >
-        </form>
-    </div>
-    <div class="container2" id="tablazat"><?php include("kerestabla.php"); ?></div>
-    <?php
-      if(isset($_GET['id']))
-      {
-         $id = $_GET['id'];
-         
->>>>>>> 32ff1c5bf554a6bd9aaabc5bdabb53fa977462d4
         if($id>0)
         {
             $lekerdezes2 = $kapcsolat->query("select * from felhasznalok where id=".$id."");
@@ -127,10 +106,7 @@
                                     <option value="admin">admin</option>
                                     <option value="felhasznalo">felhasznalo</option>
                                 </select>
-<<<<<<< HEAD
                                 <a name="szerkesztes" class="torles" href="torles.php?id='.$id.'">Törlés</a>
-=======
->>>>>>> 32ff1c5bf554a6bd9aaabc5bdabb53fa977462d4
                                 <button name="feltolt" class="fris" type="submit">mentés</button>
                         </form>
                        
@@ -142,8 +118,7 @@
     }
             
     ?>
-<<<<<<< HEAD
- </div>
+
 
     
     <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6404dcc77e2407dfb2f3ed83" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
@@ -155,19 +130,5 @@
         
                     
     </script>
-=======
- 
-    
-
-    
-    <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6404dcc77e2407dfb2f3ed83" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-        <script src="https://uploads-ssl.webflow.com/6404dcc77e2407dfb2f3ed83/js/webflow.1d3869c5a.js" type="text/javascript"></script>
-        <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
-<script src="js/admin.js"></script>
-   <style>
-    
-   </style>
->>>>>>> 32ff1c5bf554a6bd9aaabc5bdabb53fa977462d4
 </body>
 </html>

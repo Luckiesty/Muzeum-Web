@@ -2,7 +2,7 @@
 session_start();
 class Login
 {
-    public $db_csatlakozas;
+    public mysqli $db_csatlakozas;
     function __construct()
     {
         $this->db_csatlakozas = new mysqli("localhost", "root", "", "darkbluemoon");
@@ -19,7 +19,7 @@ class Login
 
             header("Location: ./home.php");
         } else {
-           echo "Sikertelen Bejentkezés! Próbál újra!";
+           echo "<script> alert('Sikertelen Bejentkezés! Próbál újra!'); windows.location='index.php'</script>";
         }
     }
     
@@ -57,7 +57,6 @@ if (isset($_POST["kijelentkezes"])) {
     <title>drakbluemoon</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/animate.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
@@ -101,7 +100,6 @@ if (isset($_POST["kijelentkezes"])) {
 </head>
 <body>
     
-<<<<<<< HEAD
 <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navigation w-nav">
             <div class="navigation-wrap">
                 <a href="/" aria-current="page" class="logo-link w-nav-brand w--current">
@@ -128,45 +126,6 @@ if (isset($_POST["kijelentkezes"])) {
                     </nav>
                     <div class="menu-button w-nav-button">
                         <img src="https://uploads-ssl.webflow.com/6404dcc77e2407dfb2f3ed83/6404dcc77e24072791f3eda8_menu-icon.png" width="22" alt="" class="menu-icon"/>
-=======
-<header class="continer-fluid ">
-            <div class="header-bottom">
-                <div class="container">
-                    <div class="row nav-row">
-                        <div class="col-md-3">
-                            <img class="fologo" src="kepek/fologo.png" alt="">
-                        </div>
-                        <div class="col-md-9 nav-col">
-                            <nav class="navbar navbar-expand-lg navbar-light">
-
-                              
-                                <div class="collapse navbar-collapse" id="navbarNav">
-                                    <ul class="navbar-nav">
-                                        <li>
-                                            <a class="nav-link" href="index.php">Főoldal</a>
-                                        </li>
-                                        <li >
-                                            <a class="nav-link" href="Rolunk.php">Rolunk</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="kategoriak.php">Kategóriák</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="videok.php">Videók</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="elorhetosegeink.php">Elérhetőségeink</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="webshop.php">Souvenir</a>
-                                        </li>
-                                    
-                                    </ul>
-                                    
-                                </div>
-                            </nav>
-                        </div>
->>>>>>> a49e2c7affc9c2f3282395ea073a45b068ae1cb4
                     </div>
                 </div>
             </div>
@@ -175,22 +134,22 @@ if (isset($_POST["kijelentkezes"])) {
    
 if (!isset($_SESSION["neve"])) {
     ?>
-    
+    <button class="open-button" onclick="openForm()">bejelentkezés</button>
 
         <div class="form-popup" id="myForm">
-                <form method='post' class="form-container" action="home.php">
-                <h1>Bejelentkezési Oldal</h1>
-                <br>
-                <label for="email"><b>Felhasználónév</b></label>
+                <form method='post' class="form-container">
+                <h1>bejelentkezés</h1>
+
+                <label for="email"><b>név</b></label>
                 <input type="text" placeholder="név" name="neve" required>
-                <br>
-                <label for="psw"><b>Jelszó</b></label>
+
+                <label for="psw"><b>jelszó</b></label>
                 <input type="password" placeholder="jelszó" name="jelszava" required>
                 <a href="regist.php">Regisztráció</a>
                 <br>
                                             
-            <button type="submit" class="btn">Bejelentkezés</button>               
-            
+            <button type="submit" class="btn">Belép</button>               
+            <button type="button" class="btn cancel" onclick="closeForm()">Bezárás</button>
         </form>
     </div>
     <?php

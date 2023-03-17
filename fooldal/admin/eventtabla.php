@@ -35,10 +35,10 @@ $kapcsolat = new mysqli("localhost", "root", "", "darkbluemoon");
                         <td>'.$sor['statusz'].'</td>
                         <td><span class="text">'.$sor['kep'].'</span></td>
                         </form>
-                        <td> <a name="szerkesztes" href="?id='.$sor['id'].'">szerkesztés</a>
+                        <td> <a name="szerkesztes" class="szerk" href="?id='.$sor['id'].'">szerkesztés</a>
+                        
                         </a>  </td>
-                        </tr>
-                        ';
+                        </tr>';
                         
                     }
                     $id = $_GET['id'];
@@ -47,7 +47,8 @@ $kapcsolat = new mysqli("localhost", "root", "", "darkbluemoon");
 
                     print "
                     </tbody></table>";       
-                   
+                    if(isset($_GET['id'])){
+                        
 ?>
 
 <!DOCTYPE html>
@@ -68,22 +69,16 @@ $kapcsolat = new mysqli("localhost", "root", "", "darkbluemoon");
  <!-- Latest minified bootstrap js -->
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
  <!-- Button to trigger modal -->
- 
+ <h1>DSadDSad</h1>
     <?php
      if(isset($_GET['id']))
      {
      $lekerdezes2 = $kapcsolat->query("select * from events where id=".$id."");
      if($sor = $lekerdezes2->fetch_assoc()){
-       print('<button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm" data-id="2">
+        ?>
+       <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm" data-id="2">
        eventletrehozzas
-   </button>    
-
-   <?php
-    
-   ?>
-
-
-
+        </button>    
 <!-- Modal -->
 <div class="modal fade" id="modalForm" role="dialog">
 <div class="modal-dialog">
@@ -100,21 +95,38 @@ $kapcsolat = new mysqli("localhost", "root", "", "darkbluemoon");
         <!-- Modal Body -->
         <div class="modal-body">
             <p class="statusMsg"></p>
-            <form method="post" action="eventmentes.php" id="insert_form" enctype="multipart/form-data">
+            <form method="post" action="eventszerkesztes.php" id="insert_form" enctype="multipart/form-data">
                 <div class="form-group">
                     <label >Név</label>
-                    <input type="text" class="form-control"  name="nev" id="nev" value="'.$sor['event'].'">
+                    <input type="text" class="form-control"  name="nev" id="nev" value="<?php echo $sor['event']?>">
                 </div>
+                
                 <div class="form-group">
                     <label >időpont</label>
-                    <input type="datetime-local" id="idopont" name="idopont"  value="'.$sor['mikor'].'">
+                    <input type="datetime-local" id="idopont" name="idopont"  value="<?php echo $sor['mikor']?>">
                 <div class="form-group">
                   <label  class="control-label">leiras</label>							
-                  <textarea class="form-control" rows="5" id="leiras" name="leiras" >'.$sor['leiras'].'</textarea>							
+                  <textarea class="form-control" rows="5" id="leiras" name="leiras" ><?php echo $sor['leiras']?></textarea>							
                 </div>	
                 <div class="form-group">
+                    <label >férőhely</label>
+                    <input type="number"class="form-control" id="ferohely"  value="<?php echo $sor['ferohely']?>" name="ferohely" />
+                </div>
+                <div class="form-group">
+                    <label >statusz</label>
+                    <select id="statusz" name="statusz"  value="<?php echo $sor['statusz']?>">
+                    <option value="privat">Privat</option>
+                    <option value="privat">publikus</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label >kep</label>
+                    <input  class="form-control" type="file" name="feltolt" id="feltolt"  value="<?php echo $sor['kep']?>">
+                <div class="form-group">
+                <div class="form-group">
                     <label >tipus</label>
-                    <select id="tipus" name="tipus">');
+                    <select id="tipus" name="tipus">
+                        <?php
                       
                       $kapcsolat = new mysqli("localhost", "root", "", "darkbluemoon");
                       $lekerdezes = $kapcsolat->query("select * from jegytipus");
@@ -123,27 +135,10 @@ $kapcsolat = new mysqli("localhost", "root", "", "darkbluemoon");
                             $tartalom .='<option value="'.$sor['nev'].'">'.$sor['nev'].'</option>';
                           }
                           echo $tartalom;
-                      print('
+                     ?>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label >férőhely</label>
-                    <input type="number"class="form-control" id="ferohely"  value="'.$sor['ferohely'].'" name="ferohely" placeholder="1"/>
-                </div>
-                <div class="form-group">
-                    <label >statusz</label>
-                    <select id="statusz" name="statusz"  value="'.$sor['statusz'].'">
-                    <option value="privat">Privat</option>
-                    <option value="privat">publikus</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label >kep</label>
-                    <input  class="form-control" type="file" name="feltolt" id="feltolt"  value="'.$sor['kep'].'">
-                <div class="form-group">
-                    <div id="selected-images"></div>
 
-                
             </form>
         </div>
          
@@ -154,12 +149,13 @@ $kapcsolat = new mysqli("localhost", "root", "", "darkbluemoon");
         </div>
     </div>
 </div>
-</div>');
+</div>
 
-
+<?php
  
         }
      }
+    }
     ?>
 </body>
 </html>

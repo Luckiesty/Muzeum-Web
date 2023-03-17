@@ -19,12 +19,6 @@
     top: 280px;
     width: 100px;
     left: 20%;
-<<<<<<< HEAD
-=======
-    
-    
-    
->>>>>>> 32ff1c5bf554a6bd9aaabc5bdabb53fa977462d4
 }
 table, th, td {
   border: 1px solid black;
@@ -32,7 +26,6 @@ table, th, td {
 }
 .szerkesztes2
 {
-<<<<<<< HEAD
   background-color:seashell;
   position: relative;
 bottom: 300px;
@@ -59,32 +52,6 @@ width: 25vw;
 
 }
 
-=======
-    background-color:seashell;
-    position: relative;
-    top: -170px;
-    left: 600px;
-    width: 400px;
-    text-align: center;
-    display: flex;
-  flex-direction: column;
-  width: 25vw;
-
-}
-.szerkesztes
-{
-    background-color:seashell;
-    position: relative;
-    top: 120px;
-    left: 850px;
-    width: 400px;
-    text-align: center;
-    display: flex;
-  flex-direction: column;
-  width: 25vw;
-
-}
->>>>>>> 32ff1c5bf554a6bd9aaabc5bdabb53fa977462d4
 form {
   display: flex;
   flex-direction: column;
@@ -109,7 +76,6 @@ button {
 div { 
   display: block;
 }
-<<<<<<< HEAD
 
 /* ===================================== jegyek ================================== */
 /* ===================================== tablak ================================== */
@@ -154,5 +120,3 @@ div {
     font-weight: bold;
     color: #009879;
 }
-=======
->>>>>>> 32ff1c5bf554a6bd9aaabc5bdabb53fa977462d4

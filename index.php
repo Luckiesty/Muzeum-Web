@@ -17,7 +17,7 @@ class Login
             $_SESSION["profilkep"] = $adatok["profilkep"];
             header("Location: ./home.php");
         } else {
-           echo "<script> alert('Sikertelen Bejentkezés! Próbál újra!'); windows.location='index.php'</script>";
+           echo "Sikertelen Bejentkezés! Próbál újra!";
         }
     }
     
@@ -56,6 +56,7 @@ if (isset($_POST["kijelentkezes"])) {
     <title>DARKBLUEMOON</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/animate.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 <body>
@@ -88,6 +89,9 @@ if (isset($_POST["kijelentkezes"])) {
                                         <li class="nav-item">
                                             <a class="nav-link" href="elorhetosegeink.php">Elérhetőségeink</a>
                                         </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="webshop.php">Souvenir</a>
+                                        </li>
                                     
                                     </ul>
                                     
@@ -107,22 +111,22 @@ if (isset($_POST["kijelentkezes"])) {
    
 if (!isset($_SESSION["neve"])) {
     ?>
-    <button class="open-button" onclick="openForm()">bejelentkezés</button>
+    
 
         <div class="form-popup" id="myForm">
-                <form method='post' class="form-container">
-                <h1>bejelentkezés</h1>
-
-                <label for="email"><b>név</b></label>
+                <form method='post' class="form-container" action="home.php">
+                <h1>Bejelentkezési Oldal</h1>
+                <br>
+                <label for="email"><b>Felhasználónév</b></label>
                 <input type="text" placeholder="név" name="neve" required>
-
-                <label for="psw"><b>jelszó</b></label>
+                <br>
+                <label for="psw"><b>Jelszó</b></label>
                 <input type="password" placeholder="jelszó" name="jelszava" required>
                 <a href="regist.php">Regisztráció</a>
                 <br>
                                             
-            <button type="submit" class="btn">Belép</button>               
-            <button type="button" class="btn cancel" onclick="closeForm()">Bezárás</button>
+            <button type="submit" class="btn">Bejelentkezés</button>               
+            
         </form>
     </div>
     <?php

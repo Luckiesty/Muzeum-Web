@@ -1,6 +1,6 @@
 <?php 
 require_once("db_controller.php");
-$db_kezeles = new DBController();
+$db_kezeles = $conn();
 if(!empty($_GET["muvelet"]))
 {
 	switch($_GET["muvelet"])

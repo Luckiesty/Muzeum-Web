@@ -76,11 +76,11 @@ $kapcsolat = new mysqli("localhost", "root", "", "darkbluemoon");
      $lekerdezes2 = $kapcsolat->query("select * from events where id=".$id."");
      if($sor = $lekerdezes2->fetch_assoc()){
         ?>
-       <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm" data-id="2">
+       <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm2" data-id="2">
        eventletrehozzas
         </button>    
 <!-- Modal -->
-<div class="modal fade" id="modalForm" role="dialog">
+<div class="modal fade" id="modalForm2" role="dialog">
 <div class="modal-dialog">
     <div class="modal-content">
         <!-- Modal Header -->

@@ -116,4 +116,21 @@ $('.fris').on('click' ,function(e)
                 })
     
 
-               
+                $('.event').on('click' ,function(e)
+                {
+                    e.preventDefault();
+                   
+                                var $form = $( '#event' ),
+                                nev = $form.find( "#nev" ).val(),
+                                url = $form.attr( "action" );
+                                console.log(nev);
+                                // Send the data using post
+                                var posting = $.post( url, {nev:nev } );
+        
+                                posting.done(function( data ) {
+                                    $("#").html(data);
+                                   
+                                });
+                            }
+                        )
+                  ;

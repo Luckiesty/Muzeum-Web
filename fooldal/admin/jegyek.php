@@ -80,7 +80,7 @@
 
     <div class="container2" id="tablazat">
     <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
-   Jegyhozzáaddás
+   +Jegyhozzáaddás 
 </button>    
     <?php include('jegytabla.php'); ?>
     
@@ -129,6 +129,12 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- Button to trigger modal -->
 
+<div class="modal fade" id="modalForm1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content modal1">
+        </div>
+    </div>
+</div>
  
 <!-- Modal -->
 <div class="modal fade" id="modalForm" role="dialog">
@@ -173,6 +179,7 @@
     </div>
 </div>
 
+
     
     <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6404dcc77e2407dfb2f3ed83" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://uploads-ssl.webflow.com/6404dcc77e2407dfb2f3ed83/js/webflow.1d3869c5a.js" type="text/javascript"></script>
@@ -186,35 +193,41 @@
 	<!-- Bootstrap JS -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+<script>
 
-    <script>
- /*         function adduser(){
-        $( "#insert_form" ).submit(function( event ) {
- 
-        // Stop form from submitting normally
-        event.preventDefault();
-
-        // Get some values from elements on the page:
-        var $form = $( this ),
-        nev = $form.find( "#nev" ).val(),
-        tipus = $form.find( "#tipus" ).val(),
-        ar = $form.find( "#ar" ).val(),
-        url = $form.attr( "action" );
-
-        // Send the data using post
-        var posting = $.post( url, { nev: nev, tipus: tipus, ar: ar } );
-
-        // Put the results in a div
-        posting.done(function( data ) {
-        console.log(data);
-         });
-       });
-
-    }
-*/
-
-
-
+  $('.torles').on('click' ,function(a)
+                          {
+                              
+                              a.preventDefault();
+                              Swal.fire({
+                                  title: 'Biztos törlöni akarod?', 
+                                  text: "Nem fogod tudodni visszaállítani!",
+                                  type: 'warning',
+                                  icon: 'warning',
+                                  showCancelButton: true,
+                                  confirmButtonColor: '#3085d6',
+                                  cancelButtonColor: '#d33',
+                                  confirmButtonText: 'törlés',
+                                  }).then((result) => { 
+                                      if (result.value) 
+                                      {
+                                          var $form = $( '#tor' ),
+                                          url = $form.attr( "action" );
+                                          console.log(url);
+                                          // Send the data using post
+                                          var posting = $.post( url );
+      
+                                          posting.done(function( data ) {
+                                              location.reload();
+                                             
+                                          });
+                                          
+                                        
+                                          
+                                      }
+                                  })
+                              });
+         
 </script>
 
 </body>

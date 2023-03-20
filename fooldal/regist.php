@@ -1,7 +1,7 @@
 <?php
 class Regisztracio
 {
-    public $db_csatlakozas;
+    public mysqli $db_csatlakozas;
     function __construct()
     {
         $this->db_csatlakozas = new mysqli("localhost", "root","", "darkbluemoon");
@@ -106,23 +106,7 @@ if(isset($_POST["submit"]))
     
     $nev = $_POST["neve"];
    
-    if ($kep != false) 
-    {
-        print("A feltöltött fájl kép.");
-
-        
-    }
-    else
-    {
-    
-    print("A feltöltött fájl nem kép."); 
-    $sikeres=0;
-    }
-
-    if (file_exists ($celfajl)){
-        print("A fájl már létezik, töltöltsen másik képet.");
-        $sikeres=0;
-        }
+   
 
         if ($_FILES["feltolt"]["size"]>2000000) {
             print ("A fájl túl nagy (max: 2Mb lehet)!"); 

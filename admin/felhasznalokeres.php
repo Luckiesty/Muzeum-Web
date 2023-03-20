@@ -77,7 +77,8 @@
    
      <div class="kereses">
         <form  method="post"  id="keres" action="kerestabla.php">
-            <input type="text" placeholder="kereses" id="kereses" name="nev" >
+           
+            <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat"> <label for="vehicle1"> I have a bike</label><br>
         </form>
     </div>  
      <div class="container2" id="tablazat">

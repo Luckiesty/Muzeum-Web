@@ -36,6 +36,9 @@ $kapcsolat = new mysqli("localhost", "root", "", "darkbluemoon");
                         <form action="eventtorles.php?id='.$sor['id'].'" method="post" id="tor">
                         <button class="torles" type="submit">Törlés</button> 
                         </form>
+                        <form action="event_nezet.php?id='.$sor['id'].'" method="post" id="">
+                        <button class="" type="submit">Nézet</button> 
+                        </form>
                         
                         </td>
                         

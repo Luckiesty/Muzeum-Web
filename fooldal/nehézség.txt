@@ -6,3 +6,4 @@
 -sweet alter feltoltese, kombinálni a gombot a sweetalterel, 
 szerkesztés gombra (nem működöt alap sweetalterel),jquery improtálása,jquery és sweetalter kombinálása
 -törlés linket akartam csinálni de mem müködöt, ezért meg csináltam ugyan ugy gombal 
+-event modal megjelenítése és a szerk modal megjel.

@@ -69,7 +69,6 @@ session_start();
                         <a href="programok.php" class="navigation-item w-nav-link">Programok</a>
                         <a href="/blog" class="navigation-item w-nav-link">Gyűjtemények</a>
                         <a href="/contact" class="navigation-item w-nav-link">Elérhetőségeink</a> 
-                        
                     <?php 
                       if(isset($_SESSION['neve']))
                       {

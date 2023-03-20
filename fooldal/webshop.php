@@ -59,49 +59,53 @@ if(!empty($_GET["muvelet"]))
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<<<<<<< HEAD
 	<link rel="stylesheet" href="webshop/webshop_style.css">
+=======
+>>>>>>> b6543ed881470b396d681a31a858f050ca95ea53
     <title>Webshop</title>
 </head>
 <body>
-<div id="shopping-cart">
-<div class="txt-heading">Shopping Cart</div>
+<div id="bevasarlo-kocsi">
+<div class="txt-heading">Kosár</div>
 
-<a id="btnEmpty" href="index.php?action=empty">Empty Cart</a>
+
 <?php
-if(isset($_SESSION["cart_item"])){
+if(isset($_SESSION["kosar_targyak"]))
+{
     $total_quantity = 0;
     $total_price = 0;
 ?>	
 <table class="tbl-cart" cellpadding="10" cellspacing="1">
 <tbody>
 <tr>
-<th style="text-align:left;">Name</th>
-<th style="text-align:left;">Code</th>
-<th style="text-align:right;" width="5%">Quantity</th>
-<th style="text-align:right;" width="10%">Unit Price</th>
-<th style="text-align:right;" width="10%">Price</th>
-<th style="text-align:center;" width="5%">Remove</th>
+<th style="text-align:left;">Név</th>
+<th style="text-align:left;">Kód</th>
+<th style="text-align:right;" width="5%">Mennyiség</th>
+<th style="text-align:right;" width="10%">Egységár</th>
+<th style="text-align:right;" width="10%">Ár</th>
+<th style="text-align:center;" width="5%">Eltávolítás</th>
 </tr>	
 <?php		
-    foreach ($_SESSION["cart_item"] as $item){
-        $item_price = $item["quantity"]*$item["price"];
+    foreach ($_SESSION["kosar_targyak"] as $item){
+        $item_price = $item["mennyiseg"]*$item["termek_ar"];
 		?>
 				<tr>
-				<td><img src="<?php echo $item["image"]; ?>" class="cart-item-image" /><?php echo $item["name"]; ?></td>
+				<td><img src="<?php echo $item["termek_kep"]; ?>" class="cart-item-image" /><?php echo $item["termek_nev"]; ?></td>
 				<td><?php echo $item["code"]; ?></td>
-				<td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
-				<td  style="text-align:right;"><?php echo "$ ".$item["price"]; ?></td>
+				<td style="text-align:right;"><?php echo $item["mennyiseg"]; ?></td>
+				<td  style="text-align:right;"><?php echo "$ ".$item["termek_ar"]; ?></td>
 				<td  style="text-align:right;"><?php echo "$ ". number_format($item_price,2); ?></td>
-				<td style="text-align:center;"><a href="index.php?action=remove&code=<?php echo $item["code"]; ?>" class="btnRemoveAction"><img src="icon-delete.png" alt="Remove Item" /></a></td>
+				<td style="text-align:center;"><a href="index.php?action=remove&code=<?php echo $item["code"]; ?>" class="btnRemoveAction"><img src="icon-delete.png" alt="Eltávolítás" /></a></td>
 				</tr>
 				<?php
-				$total_quantity += $item["quantity"];
-				$total_price += ($item["price"]*$item["quantity"]);
+				$total_quantity += $item["mennyiseg"];
+				$total_price += ($item["termek_ar"]*$item["mennyiseg"]);
 		}
 		?>
 
 <tr>
-<td colspan="2" align="right">Total:</td>
+<td colspan="2" align="right">Végösszeg:</td>
 <td align="right"><?php echo $total_quantity; ?></td>
 <td align="right" colspan="2"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></td>
 <td></td>
@@ -109,9 +113,10 @@ if(isset($_SESSION["cart_item"])){
 </tbody>
 </table>		
   <?php
-} else {
+} else 
+{
 ?>
-<div class="no-records">Your Cart is Empty</div>
+<div class="no-records">A kosár üres.</div>
 <?php 
 }
 ?>
@@ -125,8 +130,8 @@ if (!empty($product_array)) {
 		<form method="post" action="index.php?action=add&code=<?php echo $product_array[$key]["termek_kod"]; ?>">
 		<div class="product-image"><img src="<?php echo $product_array[$key]["termek_kep"]; ?>"></div>
 		<div class="product-tile-footer">
-		<div class="product-title"><?php echo utf8_encode($product_array[$key]["termek_nev"]); ?></div>
-		<div class="product-price"><?php echo $product_array[$key]["termek_ar"]. " Ft"; ?></div>
+		<div class="product-title"><?php echo $product_array[$key]["termek_nev"]; ?></div>
+		<div class="product-price"><?php echo "$".$product_array[$key]["termek_ar"]; ?></div>
 		<div class="cart-action"><input type="text" class="product-quantity" name="mennyiseg" value="1" size="2" /><input type="submit" value="Kosárhoz hozzáadás" class="btnAddAction" /></div>
 		</div>
 		</form>

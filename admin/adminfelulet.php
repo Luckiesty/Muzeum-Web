@@ -140,24 +140,39 @@
 	
         
         <script>
-           $('#felhasznalotorles').on('click' ,function(a)
-                  {
-                      const href= $(this).attr('href');
-                      a.preventDefault();
-                      Swal.fire({
-                          title: 'Biztos törlöni akarod?', 
-                          type: 'warning',
-                          showCancelButton: true,
-                          confirmButtonColor: '#3085d6',
-                          cancelButtonColor: '#d33',
-                          confirmButtonText: 'törlés',
-                          }).then((result) => { 
-                              if (result.value) 
-                              {
-                                  document.location.href = href;
-                              }
-                          })
-                      })
+            $('.torles').on('click' ,function(a)
+                          {
+                              
+                              a.preventDefault();
+                              Swal.fire({
+                                  title: 'Biztos törlöni akarod?', 
+                                  text: "Nem fogod tudodni visszaállítani!",
+                                  type: 'warning',
+                                  icon: 'warning',
+                                  showCancelButton: true,
+                                  confirmButtonColor: '#3085d6',
+                                  cancelButtonColor: '#d33',
+                                  confirmButtonText: 'törlés',
+                                  }).then((result) => { 
+                                      if (result.value) 
+                                      {
+                                          var $form = $( '#tor' ),
+                                          url = $form.attr( "action" );
+                                          console.log(url);
+                                          // Send the data using post
+                                          var posting = $.post( url );
+      
+                                          posting.done(function( data ) {
+                                              location.reload();
+                                             
+                                          });
+                                          
+                                        
+                                          
+                                      }
+                                  })
+                              });
+         
         </script>
 <style>
 

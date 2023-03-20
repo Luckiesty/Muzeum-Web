@@ -33,8 +33,9 @@ $kapcsolat = new mysqli("localhost", "root", "", "darkbluemoon");
                         <td><span class="text">'.$sor['kep'].'</span></td>
                         <td><a data-toggle="modal"  data-target="#modalForm" id="list" data-id="'.$sor['id'].'"  class="btn btn-success btn-lg" href="#modalForm">
                         szerkesztés</a>
-                        <a id="eventtorles"    href="eventtorles.php?id='.$sor['id'].'">
-                        torles</a>
+                        <form action="eventtorles.php?id='.$sor['id'].'" method="post" id="tor">
+                        <button class="torles" type="submit">Törlés</button> 
+                        </form>
                         
                         </td>
                         

@@ -38,7 +38,7 @@ body {
 	margin: 10px 0px;
 }
 
-.btnAddAction {
+#btnAddAction {
     padding: 5px 10px;
     margin-left: 5px;
     background-color: #efefef;

@@ -129,7 +129,7 @@ if (!empty($product_array)) {
 		<div class="product-tile-footer"><img src="<?php echo $product_array[$key]["termek_kep"]; ?>">
 		<div class="product-title"><?php echo $product_array[$key]["termek_nev"]; ?></div>
 		<div class="product-price"><?php echo "$".$product_array[$key]["termek_ar"]; ?></div>
-		<div class="cart-action"><input type="text" class="product-quantity" name="mennyiseg" value="1" size="2" /><input type="submit" value="Kosárhoz hozzáadás" class="btnAddAction" /></div>
+		<div class="cart-action"><input type="text" class="product-quantity" name="mennyiseg" value="1" size="2" /><input type="submit" value="Kosárhoz hozzáadás" id="btnAddAction" /></div>
 		</div>
 		</form>
 	</div>

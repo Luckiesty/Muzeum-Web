@@ -66,7 +66,7 @@ session_start();
                     <nav role="navigation" class="navigation-items w-nav-menu">
                         <a href="/about" class="navigation-item w-nav-link">Rólunk</a>
                         <a href="/projects" class="navigation-item w-nav-link">kiállitás</a>
-                        <a href="programok.php" class="navigation-item w-nav-link">Programok</a>
+                        <a href="admin/event_nezet.php" class="navigation-item w-nav-link">Programok</a>
                         <a href="/blog" class="navigation-item w-nav-link">Gyűjtemények</a>
                         <a href="/contact" class="navigation-item w-nav-link">Elérhetőségeink</a> 
                     <?php 

@@ -12,7 +12,9 @@
 
   if(!empty($name)){
     $celmappa="kep/";
+   
   $celfajl=$celmappa.basename($name);
+
   $sikeres=1;
   
   $tipusa=strtolower (pathinfo ($celfajl, PATHINFO_EXTENSION));

@@ -212,13 +212,14 @@
                                       if (result.value) 
                                       {
                                           var $form = $( '#tor' ),
+                                          id = $form.find( "#id" ).val(),
                                           url = $form.attr( "action" );
-                                          console.log(url);
+                                          console.log(id);
                                           // Send the data using post
-                                          var posting = $.post( url );
+                                          var posting = $.post( url , { id: id} );
       
-                                          posting.done(function( data ) {
-                                              location.reload();
+                                          posting.done(function( data) {
+                                             $("#tablazat").html(data);
                                              
                                           });
                                           

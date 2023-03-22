@@ -79,7 +79,7 @@ $('.fris').on('click' ,function(e)
                     
                     });
 
-
+                  
            
           
                 $("#felhasznalomodal").on('click', function() {

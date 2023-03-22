@@ -111,12 +111,8 @@ if (isset($_POST["kijelentkezes"])) {
                         <a href="/projects" class="navigation-item w-nav-link">kiállitás</a>
                         <a href="programok.php" class="navigation-item w-nav-link">Programok</a>
                         <a href="/blog" class="navigation-item w-nav-link">Gyűjtemények</a>
-<<<<<<< HEAD
                         <a href="/contact" class="navigation-item w-nav-link">Elérhetőségeink</a>
                         <a href="webshop.php" class="navigation-item w-nav-link">Múzeumshop</a>    
-=======
-                        <a href="/contact" class="navigation-item w-nav-link">Elérhetőségeink</a>    
->>>>>>> parent of b6543ed (szerk)
                         
                                                  
                       <?php 

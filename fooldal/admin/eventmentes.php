@@ -10,8 +10,26 @@
   $statusz=$_POST['statusz'];
   $kep =$_POST['kep'] ;
   $name = $_FILES["feltolt"]["name"];
+<<<<<<< HEAD
   $type = $_FILES["feltolt"]["type"];
   $size = $_FILES["feltolt"]["size"];
+=======
+
+  if(!empty($name)){
+    $celmappa="kep/";
+   
+  $celfajl=$celmappa.basename($name);
+
+  $sikeres=1;
+  
+  $tipusa=strtolower (pathinfo ($celfajl, PATHINFO_EXTENSION));
+  
+  $kep =getimagesize($_FILES["feltolt"]["tmp_name"]) ;
+  
+
+ 
+  
+>>>>>>> 740541d6dee3a90aebbeef4b011316910f73e658
   
   $sql ="INSERT INTO events (`event`,`leiras`,`mikor`,`type`,`ferohely`,`statusz`,`kep`) 
   VALUES ('" . $nev . "', '" . $leiras . "', '" .$idopont . "' , 

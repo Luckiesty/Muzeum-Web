@@ -119,4 +119,290 @@ div {
 .styled-table tbody tr.active-row {
     font-weight: bold;
     color: #009879;
+<<<<<<< HEAD
+=======
+}
+
+  
+
+.keresesevent
+{
+  position: relative;
+  margin: auto;
+  width: 50%;
+  bottom: 40px;
+  padding: 10px;
+  
+}
+.form-inline {  
+display: flex;
+flex-flow: row wrap;
+align-items: center;
+}
+
+.form-inline label {
+margin: 5px 10px 5px 0;
+}
+
+.form-inline input {
+vertical-align: middle;
+margin: 5px 10px 5px 0;
+padding: 10px;
+background-color: #fff;
+border: 1px solid #ddd;
+}
+
+.form-inline button {
+padding: 10px 20px;
+background-color: dodgerblue;
+border: 1px solid #ddd;
+color: white;
+cursor: pointer;
+}
+
+.form-inline button:hover {
+background-color: royalblue;
+}
+
+@media (max-width: 800px) {
+.form-inline input {
+  margin: 10px 0;
+}
+
+.form-inline {
+  flex-direction: column;
+  align-items: stretch;
+}
+}
+      .nev{
+          position: absolute;
+          bottom: 0px;
+          left: 15px;
+          color: #fff;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 1.55;
+          z-index: 2;
+         
+      }
+      .top
+      {
+          position: relative;
+          width: 100%;
+          z-index: 2;
+
+      }
+      .type
+      {
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: auto;
+          max-width: 100%;
+          padding: 5px 10px;
+          background-color: #ad1a27;
+          color: #fff;
+          font-family: "HK Grotesk",sans-serif;
+          font-size: 20px;
+          font-weight: 600;
+          line-height: 20px;
+      }
+      .team-member-image-two
+      {
+          width: 100%;
+          aspect-ratio: 3 / 2;
+          -o-object-fit: cover;
+          object-fit: cover;
+          display: block;
+ 
+          height: auto;
+          -webkit-transition-duration: .5s;
+          -o-transition-duration: .5s;
+          transition-duration: .5s;
+      }
+      
+      
+      .text {
+          display: block;
+width: 100%;
+overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis;
+}
+      .team-member-name-two{
+          position: absolute;
+          bottom: 15px;
+          left: 15px;
+          color: #fff;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 1.55;
+          z-index: 2;
+      }
+.team-slider {
+  position: relative;
+  padding: 80px 30px;
+  border-bottom: 1px solid #e4ebf3;
+ 
+}
+
+  .asd{
+      position: relative ;
+      bottom:  100px;
+      z-index: 2;
+      color: red;
+      color: white;
+
+  }
+  .flex-container {
+display: flex;
+flex-wrap: wrap;
+margin: auto;
+  width:93%;
+  border: 3px solid gray;
+  border-radius: 30px;
+  background-image:  url('eventhat.jpg');
+
+ 
+
+
+}
+
+.team-member-image-two {
+  margin-bottom: 18px;
+}
+.flex-container > div {
+
+width: 100px;
+margin: 10px;
+text-align: center;
+line-height: 75px;
+font-size: 30px;
+}
+.div-block-2 {
+  width: 400px;
+  background-color: #f1f1f1;
+  box-shadow: 0 0 5px 5px cornsilk;
+  
+}
+
+@media screen and (max-width: 991px) {
+  .container {
+      max-width: 728px;
+  }
+
+  .pricing-card-two {
+      padding: 24px;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+  }
+
+  .pricing-image-two {
+      margin-right: 20px;
+  }
+
+  .container-2 {
+      max-width: 728px;
+  }
+
+  .team-slide-wrapper {
+      width: 47%;
+      margin-right: 6%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .pricing-items {
+      padding: 60px 15px;
+  }
+
+  .pricing-card-two {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-pack: start;
+      -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+      justify-content: flex-start;
+      -webkit-box-align: stretch;
+      -webkit-align-items: stretch;
+      -ms-flex-align: stretch;
+      align-items: stretch;
+  }
+
+  .pricing-image-two {
+      max-width: 100%;
+      margin-right: 0px;
+      margin-bottom: 30px;
+  }
+
+  .team-slider {
+      padding: 60px 15px;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .container {
+      max-width: none;
+  }
+
+  .pricing-card-two {
+      padding: 15px;
+  }
+
+  .pricing-info {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-pack: start;
+      -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+      justify-content: flex-start;
+      -webkit-box-align: start;
+      -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+      align-items: flex-start;
+  }
+
+  .pricing-details {
+      margin-bottom: -10px;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-pack: start;
+      -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+      justify-content: flex-start;
+      -webkit-box-align: start;
+      -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+      align-items: flex-start;
+  }
+
+  .pricing-block {
+      margin-bottom: 10px;
+  }
+
+  .container-2 {
+      max-width: none;
+  }
+
+  .centered-heading {
+      margin-bottom: 24px;
+  }
+
+  .team-slide-wrapper {
+      width: 100%;
+      margin-right: 0%;
+  }
+>>>>>>> 740541d6dee3a90aebbeef4b011316910f73e658
 }

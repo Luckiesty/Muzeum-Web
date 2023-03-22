@@ -2,11 +2,7 @@
 session_start();
 class Login
 {
-<<<<<<< HEAD
     public $db_csatlakozas;
-=======
-    public mysqli $db_csatlakozas;
->>>>>>> parent of b6543ed (szerk)
     function __construct()
     {
         $this->db_csatlakozas = new mysqli("localhost", "root", "", "darkbluemoon");

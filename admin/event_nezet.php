@@ -1,22 +1,69 @@
 <?php
 session_start();
-    if (isset($_POST["kijelentkezes"])) {
-        session_unset(); 
-         session_destroy();
-         header("Location: ./index.php");
-     }
+error_reporting(0);
+$kapcsolat = new mysqli("localhost", "root", "", "darkbluemoon");
+<<<<<<< HEAD:admin/event_nezet.php
+$id = $_GET['id'];
+ $lekerdezes2 = $kapcsolat->query("select * from events where id=".$id."");
+ if($sor = $lekerdezes2->fetch_assoc()){
+$kep = $sor["kep"];
+=======
+class Login
+{
+    public mysqli $db_csatlakozas;
+    function __construct()
+    {
+        $this->db_csatlakozas = new mysqli("localhost", "root", "", "darkbluemoon");
+    }
+>>>>>>> 740541d6dee3a90aebbeef4b011316910f73e658:fooldal/admin/event_nezet.php
+
+    function Bejelentkezes($nev, $jelszo)
+    {
+        $tabla_lekeres = $this->db_csatlakozas->query("SELECT * FROM felhasznalok WHERE neve = '" . $nev . "' AND jelszava = '".md5($jelszo) . "'");
+        if ($adatok = $tabla_lekeres->fetch_assoc()) {
+            $_SESSION["neve"] = $adatok["neve"];
+            $_SESSION["id"] = $adatok["id"];
+            $_SESSION["profilkep"] = $adatok["profilkep"];
+            header("Location: ./home.php");
+        } else {
+           echo "<script> alert('Sikertelen Bejentkezés! Próbál újra!'); windows.location='index.php'</script>";
+        }
+    }
+    
+    function BeVanEJelentkezve()
+    {
+        if (isset($_SESSION["neve"])) 
+        {
+            return true;
+        } else 
+        {
+            return false;
+        }
+    }
+    
+}
+$peldanyositas_bejel = new Login();
+if (isset($_POST["neve"]) && isset($_POST["jelszava"])) {
+    $peldanyositas_bejel->Bejelentkezes($_POST["neve"], $_POST["jelszava"]);
+}
+
+if (isset($_POST["kijelentkezes"])) {
+    session_unset(); 
+     session_destroy();
+     header("Location: http://projectmunka.loc/");
+ }
 ?>
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<html data-wf-domain="xraj01s-fantabulous-site.webflow.io" data-wf-page="6404dcc77e2407f8caf3ed97" data-wf-site="6404dcc77e2407dfb2f3ed83">
+    <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>drakbluemoon</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/animate.css">
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
-        
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" type="text/css" href="css/admin.css">
 
 
 
@@ -55,42 +102,29 @@ session_start();
             };
         </script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body>
-<div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navigation w-nav">
+    </head>
+    <body>
+        <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navigation w-nav">
             <div class="navigation-wrap">
-                <a href="home.php" aria-current="page" class="logo-link w-nav-brand w--current">
-                    <img src="kepek/logo.png"  alt="" class="logo-image"/>
+                <a href="index.php" class="logo-link w-nav-brand">
+                <img src="kep/logo.png"  alt="" class="logo-image"/>
                 </a>
                 <div class="menu">
-                    <nav role="navigation" class="navigation-items w-nav-menu">
+                <nav role="navigation" class="navigation-items w-nav-menu">
                         <a href="/about" class="navigation-item w-nav-link">Rólunk</a>
                         <a href="/projects" class="navigation-item w-nav-link">kiállitás</a>
-                        <a href="admin/event_nezet.php" class="navigation-item w-nav-link">Programok</a>
+                        <a href="programok.php" class="navigation-item w-nav-link">Programok</a>
                         <a href="/blog" class="navigation-item w-nav-link">Gyűjtemények</a>
-                        <a href="/contact" class="navigation-item w-nav-link">Elérhetőségeink</a> 
-                        
-                    <?php 
+                        <a href="/contact" class="navigation-item w-nav-link">Elérhetőségeink</a>     
+                        <?php 
                       if(isset($_SESSION['neve']))
                       {
                         print('<form method ="post" >
                         <button type="submit" name="kijelentkezes" >Kilépek</button>
                         </form>');
                         print('<img class="profilkep1 menu-btn>" width="36"  src="'.$_SESSION['profilkep'].'" alt=""> ');
-
-                        $kapcsolat = new mysqli("localhost", "root", "", "darkbluemoon");
-
-                        $sqlkapcsolat2 = $kapcsolat->query("SELECT * FROM felhasznalok WHERE id=". $_SESSION['id'] . " AND statusz='admin'");
-                        if($sqlkapcsolat2->num_rows == 1)
-                        {
-                            print('<a href="admin/adminfelulet.php" aria-current="page" class="logo-link w-nav-brand w--current">
-                           ADMIN
-                            </a>');
-
-                        }
-                        
                       }
-                     ?>                                                
+                     ?>                                               
                     </nav>
                     <div class="menu-button w-nav-button">
                         <img src="https://uploads-ssl.webflow.com/6404dcc77e2407dfb2f3ed83/6404dcc77e24072791f3eda8_menu-icon.png" width="22" alt="" class="menu-icon"/>
@@ -98,95 +132,137 @@ session_start();
                 </div>
             </div>
         </div>
+
         <?php 
    
-   if (!isset($_SESSION["neve"])) {
-       ?>
-       <button class="open-button" onclick="openForm()">bejelentkezés</button>
-   
-           <div class="form-popup" id="myForm">
-                   <form method='post' class="form-container">
-                   <h1>bejelentkezés</h1>
-   
-                   <label for="email"><b>név</b></label>
-                   <input type="text" placeholder="név" name="neve" required>
-   
-                   <label for="psw"><b>jelszó</b></label>
-                   <input type="password" placeholder="jelszó" name="jelszava" required>
-                   <a href="regist.php">Regisztráció</a>
-                   <br>
-                                               
-               <button type="submit" class="btn">Belép</button>               
-               <button type="button" class="btn cancel" onclick="closeForm()">Bezárás</button>
-           </form>
-       </div>
-       <?php
+if (!isset($_SESSION["neve"])) {
+    ?>
+    <button class="open-button" onclick="openForm()">bejelentkezés</button>
+
+        <div class="form-popup" id="myForm">
+                <form method='post' class="form-container">
+                <h1>bejelentkezés</h1>
+
+                <label for="email"><b>név</b></label>
+                <input type="text" placeholder="név" name="neve" required>
+
+                <label for="psw"><b>jelszó</b></label>
+                <input type="password" placeholder="jelszó" name="jelszava" required>
+                <a href="regist.php">Regisztráció</a>
+                <br>
+                                            
+            <button type="submit" class="btn">Belép</button>               
+            <button type="button" class="btn cancel" onclick="closeForm()">Bezárás</button>
+        </form>
+    </div>
+    <?php
+     
+        }                              
+    ?>
+        <div class="section cc-home-wrap">
+            <div class="intro-header cc-subpage">
+                <div class="intro-content">
+                    <div class="heading-jumbo">
+                    Programok<br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+<<<<<<< HEAD:admin/event_nezet.php
+        <div class="kereses">
+        <form  method="post"  id="keres" action="kerestabla.php">
+            <input type="text" placeholder="kereses" id="kereses" name="nev" >
+            <label for="vehicle2"> I have a car</label><br>
+            <input type="checkbox" id="vehicle3" name="vehicle3" value="">
+        </form>
+    </div> 
+       <a href="http://projectmunka.loc/admin/programok.php">Vissza</a>
+        <div class="flex-container">
         
-           }                              
-       ?>
+        <section class="team-slider wf-section">
+=======
+        <div class="keresesevent">
+            <h1>kinek?</h1>
+        <form class="form-inline" method="post"  id="keres" > 
+        <label style="display:inline;">Mindenkinek</label>
+        <input style="margin-right:10px;" type="checkbox" name="nev" id="kereses2" value="" >
+        <?php
+        
+        $tartalom = "";
+        $lekerdezes4 = $kapcsolat->query("select * from jegytipus ");
+         while($sor = $lekerdezes4->fetch_assoc()){
+         $tartalom .='
+         
+         <label style="display:inline;"> '.$sor['nev'].'</label>
+         <input style="margin-right:10px;" type="checkbox" name="nev" id="kereses2" value="'.$sor['nev'].'">
+        ';
+        
+        }
+        print($tartalom);
+        ?>
+            <button type="submit">kereses</button>
+       
+         </form>
+         </div> 
+   
+    
+       <?php
 
 
-    <!--menu-->
-    <div class="section cc-store-home-wrap">
-            <div class="intro-header">
-                <div class="intro-content cc-homepage">
-                    <div><h1>Tudományos és Csillagászati Muzeum</h1></div>
-                    <div class="intro-text"></div>
-                    <a href="/about" class="button cc-jumbo-button cc-jumbo-black w-inline-block">
-                        <div>tudj meg többet</div>
-                    </a>
-                </div>
-            </div>
-            <div class="container">
-                
-                <div class="divider"></div>
-                <div class="home-content-wrap">
-                    <div class="w-layout-grid about-grid">
-                        <div id="w-node-_86e64837-0616-515b-4568-76c147234d34-2df3ed86">
-                            <div class="home-section-wrap">
-                                
-                                <p class="paragraph-light">Az új Múzeum tudományos céllal és a történelem során az épületek égi vonatkozásaival való összekapcsolása révén a kiállítások és az építészet többet kommunikálnak, mint maga a tudomány:rávilágít arra, hogy mit jelent embernek lenni egy hatalmas és nagyrészt ismeretlen univerzumban.</p>
-                            </div>
-                        </div>
-                        <img src="kepek/muzeumkep2.jpg" id="w-node-_86e64837-0616-515b-4568-76c147234d3f-2df3ed86" alt=""/>
+
+$nev = $_POST['nev'];
+
+ $lekerdezes = $kapcsolat->query("select * from events WHERE type  like '".$nev."%' AND statusz != 'privat'");
+
+?>
+      
+       <div class="flex-container">
+ <?php 
+ $tartalom = "";
+            while($sor = $lekerdezes->fetch_assoc()){
+                $tartalom .='
+                <section class="team-slider wf-section">
+>>>>>>> 740541d6dee3a90aebbeef4b011316910f73e658:fooldal/admin/event_nezet.php
+            <div class="div-block-2">
+            
+                <div class="team-block">
+                    <div class="top">
+                    <img src="'.$sor['kep'].'" loading="lazy" alt="" class="team-member-image-two"/>
+                    <div class="type"><strong><span class="text2">  '.$sor['type'].'</span></strong></div>
+                    <div class="nev"><h3 >'.$sor['event'].'</h3></div>
                     </div>
-                    <div class="w-layout-grid about-grid cc-about-2">
-                        <div id="w-node-_86e64837-0616-515b-4568-76c147234d41-2df3ed86">
-                            <div class="home-section-wrap">
-                                <p class="paragraph-light">A monumentális új múzeum magával ragadó élményt nyújt, amely valódi csillagászati ​​jelenségekkel közvetlen kapcsolatba hozza a látogatókat. A lépték, a forma és a fény manipulációja révén az épület felhívja a figyelmet a Naphoz és a Föld keringési mozgásához való alapvető kapcsolatunkra. A 420 000 négyzetláb alapterületű Sanghaji Tudományos és Technológiai Múzeum új csillagászati ​​ága a világ legnagyobb múzeuma lesz, amelyet kizárólag a csillagászat tanulmányozására szentelnek.</p>
-                            </div>
-                        </div>
-                        <img src="kepek/telescope.jpg" id="w-node-_86e64837-0616-515b-4568-76c147234d4c-2df3ed86" alt=""/>
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                
-                <div class="divider"></div>
-                <div class="home-content-wrap">
-                    <div class="w-layout-grid about-grid">
-                        <div id="w-node-_86e64837-0616-515b-4568-76c147234d34-2df3ed86">
-                            <div class="home-section-wrap">
-                                <p class="paragraph-light">A kiterjedt zöldövezetben elhelyezkedő múzeum területén számos épület és program található, beleértve az ideiglenes és állandó kiállításokat, egy 78 méteres naptávcsövet, egy obszervatóriumot, egy optikai planetáriumot, az Oktatási és Kutatóközpontot és a Digital Sky Theatre-t. A múzeum programozása magával ragadó környezetekkel, űrkutatási tárgyakkal és eszközökkel, valamint oktatási kiállítással várja vendégeit.</p>
-                            </div>
-                        </div>
-                        <img src="kepek/muzeumkep1.jpg" id="w-node-_86e64837-0616-515b-4568-76c147234d3f-2df3ed86" alt=""/>
-                    </div>
-                    <div class="w-layout-grid about-grid cc-about-2">
-                        <div id="w-node-_86e64837-0616-515b-4568-76c147234d41-2df3ed86">
-                            <div class="home-section-wrap">
-                                <p class="paragraph-light">Miközben a Sanghaji Tudományos és Technológiai Múzeum tudományos és technológiai képességeit emeli, és múzeumként szolgál az egyetemes perspektíva fokozására, a Shanghai Astronomy Museum mérföldkőnek számító struktúrát és polgári központot hoz létre a fejlődő Lingang területen.</p>
-                            </div>
+                    
+                    
+                    <div class="team-block-info">
+                   
+                        <p class="team-member-text"><span class="text">'.  $sor['leiras'].'</span></p>
+                        <form action="" method="post">
+                           <button type="submit" style="background-color:gray;  color:white;"> tudjmegtöbbet..</button>
+                        </form>
+                       
+                        <div>
+                        <p class="team-member-text" style=""><b>'.$sor['ferohely'].' FÕ</b></p>  <p class="team-member-text" style=""><b>'.$sor['mikor'].'</b></p>
                         </div>
                         
-                        <video id="w-node-_86e64837-0616-515b-4568-76c147234d4c-2df3ed86" width="700" height="400" controls autoplay>
-                        <source src="videok/videoplayback.mp4" type="video/mp4">
-                          <source src="movie.ogg" type="video/ogg">
-                          Az Ön böngészője nem támogatja a videocímkét.
-                      </video>
+                        
+                            <div class="arrow-embed w-embed">
+                               <form action="" method="post">
+                                <button type="submit" style="background-color:gray; width:100%; color:white;">Jegyvarsarlas-></button>
+                               </form>
+                            </div>
+                       
                     </div>
-        </div>      
-        </section>
+                </div>
+                
+            </div>
+        </section>';
+                 
+            }
+            print($tartalom);
+        
+
+?>
+</div>
         <div class="section">
             <section class="footer-dark wf-section">
                 <div class="container-2">
@@ -238,21 +314,15 @@ session_start();
                 </div>
                 <div class="footer-divider"></div>
                 <div class="footer-copyright-center"> © 2023 DARK BLUE MOON</div>
-            </section>
-        
-
-
-
-        
-        <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6404dcc77e2407dfb2f3ed83" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-        <script src="https://uploads-ssl.webflow.com/6404dcc77e2407dfb2f3ed83/js/webflow.1d3869c5a.js" type="text/javascript"></script>
-        <!--[if lte IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
-
-</script>
-
-      
-    <script src="css/javascript.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.3.js"></script>
-
-</body>
+                <script src="css/javascript.js"></script>
+       
+    </body>
 </html>
+<style>
+    .intro-header.cc-subpage {
+  height: 340px;
+  background-color: #000;
+  background-image: none;
+  color: #fff;
+}
+</style>

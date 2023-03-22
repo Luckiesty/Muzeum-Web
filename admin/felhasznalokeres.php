@@ -75,49 +75,40 @@
    
     
    
-    <div >
+     <div class="kereses">
         <form  method="post"  id="keres" action="kerestabla.php">
-            <input type="text" placeholder="kereses" id="kereses" name="nev" >
+           
+            <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat"> <label for="vehicle1"> I have a bike</label><br>
         </form>
     </div>  
      <div class="container2" id="tablazat">
       
-     <?php include("kerestabla.php"); ?> </div>
+     <?php include("kerestabla.php"); ?> 
+    
+    </div>
             
     
-    <?php
-         
-         if(isset($_GET['id']))
-         {
-             $id = $_GET['id'];
-        if($id>0)
-        {
-            $lekerdezes2 = $kapcsolat->query("select * from felhasznalok where id=".$id."");
-            if($sor = $lekerdezes2->fetch_assoc()){
-            print('<div class="szerkesztes2">
-            <form method="post">
-            <h2>Szerkesztés</h2>
-                                <label>nev</label>
-                                <input type="text" name="nevfris" value="'.$sor['neve'].'" id="nev"><br>
-                                <label >email</label>
-                                <input type="text" name="emailfris" value="'.$sor['email'].'" id="email"><br>
-                                <label >státusz</label>
-                                <select id="statusz" name="statuszfris">
-                                    <option value="admin">admin</option>
-                                    <option value="felhasznalo">felhasznalo</option>
-                                </select>
-                                <a name="szerkesztes" class="torles" href="torles.php?id='.$id.'">Törlés</a>
-                                <button name="feltolt" class="fris" type="submit">mentés</button>
-                        </form>
-                       
-                        </div> ');
-            }
-      
-        }
-        
-    }
-            
-    ?>
+  
+
+ 
+    <!-- Latest minified bootstrap css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ 
+ <!-- jQuery library -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  
+ <!-- Latest minified bootstrap js -->
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <!-- Button to trigger modal -->
+
+        <!-- Modal -->
+<div class="modal fade" id="modalForm" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+          
+        </div>
+    </div>
+</div>
 
 
     
@@ -126,9 +117,41 @@
     <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
     <script src="js/admin.js"></script>
-    <script>
-        
-                    
-    </script>
+<script>
+            $('.torles').on('click' ,function(a)
+                          {
+                              
+                              a.preventDefault();
+                              Swal.fire({
+                                  title: 'Biztos törlöni akarod?', 
+                                  text: "Nem fogod tudodni visszaállítani!",
+                                  type: 'warning',
+                                  icon: 'warning',
+                                  showCancelButton: true,
+                                  confirmButtonColor: '#3085d6',
+                                  cancelButtonColor: '#d33',
+                                  confirmButtonText: 'törlés',
+                                  }).then((result) => { 
+                                      if (result.value) 
+                                      {
+                                          var $form = $( '#tor' ),
+                                          url = $form.attr( "action" );
+                                          console.log(url);
+                                          // Send the data using post
+                                          var posting = $.post( url );
+      
+                                          posting.done(function( data ) {
+                                              location.reload();
+                                             
+                                          });
+                                          
+                                        
+                                          
+                                      }
+                                  })
+                              });
+         
+        </script>
+
 </body>
 </html>

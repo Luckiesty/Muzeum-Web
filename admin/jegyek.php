@@ -80,7 +80,7 @@
 
     <div class="container2" id="tablazat">
     <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
-   Jegyhozzáaddás
+   +Jegyhozzáaddás 
 </button>    
     <?php include('jegytabla.php'); ?>
     
@@ -173,6 +173,7 @@
     </div>
 </div>
 
+
     
     <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6404dcc77e2407dfb2f3ed83" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://uploads-ssl.webflow.com/6404dcc77e2407dfb2f3ed83/js/webflow.1d3869c5a.js" type="text/javascript"></script>
@@ -186,37 +187,6 @@
 	<!-- Bootstrap JS -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<<<<<<< HEAD
-
-    <script>
- /*         function adduser(){
-        $( "#insert_form" ).submit(function( event ) {
- 
-        // Stop form from submitting normally
-        event.preventDefault();
-
-        // Get some values from elements on the page:
-        var $form = $( this ),
-        nev = $form.find( "#nev" ).val(),
-        tipus = $form.find( "#tipus" ).val(),
-        ar = $form.find( "#ar" ).val(),
-        url = $form.attr( "action" );
-
-        // Send the data using post
-        var posting = $.post( url, { nev: nev, tipus: tipus, ar: ar } );
-
-        // Put the results in a div
-        posting.done(function( data ) {
-        console.log(data);
-         });
-       });
-
-    }
-*/
-
-
-
-=======
 <script>
 
   $('.torles').on('click' ,function(a)
@@ -236,14 +206,13 @@
                                       if (result.value) 
                                       {
                                           var $form = $( '#tor' ),
-                                          id = $form.find( "#id" ).val(),
                                           url = $form.attr( "action" );
-                                          console.log(id);
+                                          console.log(url);
                                           // Send the data using post
-                                          var posting = $.post( url , { id: id} );
+                                          var posting = $.post( url );
       
-                                          posting.done(function( data) {
-                                             $("#tablazat").html(data);
+                                          posting.done(function( data ) {
+                                              location.reload();
                                              
                                           });
                                           
@@ -253,7 +222,6 @@
                                   })
                               });
          
->>>>>>> 740541d6dee3a90aebbeef4b011316910f73e658
 </script>
 
 </body>

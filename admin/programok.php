@@ -46,7 +46,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">    
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+       
         <link rel="stylesheet" type="text/css" href="css/admin.css">
         
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
@@ -75,49 +75,21 @@
             </div>
         </div>
     </div>
-    
-    <div class="jegyhozzbtn">
+    <div class="container2"  id="tablazat">
+  
+       <div class="eventplus"  id="tablazat">
+    <button  class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
+          +eventletrehozzas
+      </button>  
 
-    <div class="container2" id="tablazat">
-    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
-   Jegyhozzáaddás
-</button>    
-    <?php include('jegytabla.php'); ?>
-    
-    
+      </div>
+<?php include('eventtabla.php'); ?>
+</div>
 
     <?php
-    if(isset($_GET['id']))
-    {
-        $id = $_GET['id'];
-        if($id>0)
-        {
-            $lekerdezes2 = $kapcsolat->query("select * from jegytipus where jegy_id=".$id."");
-            if($sor = $lekerdezes2->fetch_assoc()){
-            print('<div class="szerkesztes2">
-            <form method="post" id="jegyszek" action="jegyszerkesztes.php?id='.$id.'">
-            <h2>Szerkesztés</h2>
-                                <label>nev</label>
-                                <input type="text" name="jnevfris" value="'.$sor['nev'].'" id="nev"><br>
-                                <label >tipus</label>
-                                <input type="text" name="tipusfris" value="'.$sor['tipus'].'" id="tipus"><br>
-                                <label >ár</label>
-                                <input type="text" name="frisar" value="'.$sor['ar'].'" id="ar"><br>
-                                <a name="szerkesztes" class="jegytorles" href="jegytorles.php?id='.$id.'">Törlés</a>
-                                <button name="feltolt" class="jegyfris" type="submit">mentés</button>
-                        </form>
-                        
-                        </div> ');
-            }
-            
-        }
-        
-    }
-
-            
+   
     ?>
-    </div>
-    </div>
+   
     
 <!-- Latest minified bootstrap css -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -140,27 +112,56 @@
                     <span aria-hidden="true">×</span>
                     <span class="sr-only">Close</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">Jegyhozzáaddás</h4>
+                <h4 class="modal-title" id="myModalLabel">eventletrehozzas</h4>
             </div>
              
             <!-- Modal Body -->
             <div class="modal-body">
                 <p class="statusMsg"></p>
-                <form method="post" action="jegyekmentes.php" id="insert_form" >
+                <form method="post" action="eventmentes.php" id="insert_form" enctype="multipart/form-data">
                     <div class="form-group">
                         <label >Név</label>
                         <input type="text" class="form-control"  name="nev" id="nev" placeholder="Add meg a nevét"/>
                     </div>
                     <div class="form-group">
-                        <label >Tipus</label>
-                        <input type="text" class="form-control"  name="tipus" id="tipus" placeholder="Add meg a tipusát"/>
+                        <label >időpont</label>
+                        <input type="datetime-local" id="idopont" name="idopont" >
+                    <div class="form-group">
+                      <label  class="control-label">leiras</label>							
+                      <textarea class="form-control" rows="5" id="leiras" name="leiras"></textarea>							
+                    </div>	
+                    <div class="form-group">
+                        <label >tipus</label>
+                        <select id="tipus" name="tipus">
+                          <?php 
+                          $kapcsolat = new mysqli("localhost", "root", "", "darkbluemoon");
+                          $lekerdezes = $kapcsolat->query("select * from jegytipus");
+                          $tartalom ="";
+                              while($sor = $lekerdezes->fetch_assoc()){
+                                $tartalom .='<option value="'.$sor['nev'].'">'.$sor['nev'].'</option>';
+                              }
+                              echo $tartalom;
+                          ?>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label >ÁR</label>
-                        <input type="text"class="form-control" id="ar" name="ar" placeholder="Add meg az árát"/>
+                        <label >férőhely</label>
+                        <input type="number"class="form-control" id="ferohely" name="ferohely" placeholder="1"/>
                     </div>
-                
-                    <input type="submit"  name="insert" id="insert" value="Insert" class="btn btn-success" onclick="adduser()" />
+                    <div class="form-group">
+                        <label >statusz</label>
+                        <select id="statusz" name="statusz">
+                        <option value="privat">Privat</option>
+                        <option value="publikus">publikus</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label >kep</label>
+                        <input  class="form-control" type="file" name="feltolt" id="feltolt">
+                    <div class="form-group">
+                        <div id="selected-images"></div>
+
+                    <input type="submit" onClick="openModel()"  name="insert" id="insert" value="Insert" class="btn btn-success"/>
                 </form>
             </div>
              
@@ -173,7 +174,7 @@
     </div>
 </div>
 
-    
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6404dcc77e2407dfb2f3ed83" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://uploads-ssl.webflow.com/6404dcc77e2407dfb2f3ed83/js/webflow.1d3869c5a.js" type="text/javascript"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
@@ -185,76 +186,14 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<!-- Bootstrap JS -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-<<<<<<< HEAD
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
- /*         function adduser(){
-        $( "#insert_form" ).submit(function( event ) {
+   
  
-        // Stop form from submitting normally
-        event.preventDefault();
-
-        // Get some values from elements on the page:
-        var $form = $( this ),
-        nev = $form.find( "#nev" ).val(),
-        tipus = $form.find( "#tipus" ).val(),
-        ar = $form.find( "#ar" ).val(),
-        url = $form.attr( "action" );
-
-        // Send the data using post
-        var posting = $.post( url, { nev: nev, tipus: tipus, ar: ar } );
-
-        // Put the results in a div
-        posting.done(function( data ) {
-        console.log(data);
-         });
-       });
-
-    }
-*/
-
-
-
-=======
-<script>
-
-  $('.torles').on('click' ,function(a)
-                          {
-                              
-                              a.preventDefault();
-                              Swal.fire({
-                                  title: 'Biztos törlöni akarod?', 
-                                  text: "Nem fogod tudodni visszaállítani!",
-                                  type: 'warning',
-                                  icon: 'warning',
-                                  showCancelButton: true,
-                                  confirmButtonColor: '#3085d6',
-                                  cancelButtonColor: '#d33',
-                                  confirmButtonText: 'törlés',
-                                  }).then((result) => { 
-                                      if (result.value) 
-                                      {
-                                          var $form = $( '#tor' ),
-                                          id = $form.find( "#id" ).val(),
-                                          url = $form.attr( "action" );
-                                          console.log(id);
-                                          // Send the data using post
-                                          var posting = $.post( url , { id: id} );
-      
-                                          posting.done(function( data) {
-                                             $("#tablazat").html(data);
-                                             
-                                          });
-                                          
-                                        
-                                          
-                                      }
-                                  })
-                              });
-         
->>>>>>> 740541d6dee3a90aebbeef4b011316910f73e658
+ 
 </script>
+<style>
 
+</style>
 </body>
 </html>

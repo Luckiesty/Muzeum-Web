@@ -1,7 +1,5 @@
 <?php
 session_start();
-error_reporting(0);
-$kapcsolat = new mysqli("localhost", "root", "", "darkbluemoon");
 class Login
 {
     public mysqli $db_csatlakozas;
@@ -43,7 +41,7 @@ if (isset($_POST["neve"]) && isset($_POST["jelszava"])) {
 if (isset($_POST["kijelentkezes"])) {
     session_unset(); 
      session_destroy();
-     header("Location: http://projectmunka.loc/");
+     header("Location: ./index.php");
  }
 ?>
 <!DOCTYPE html>
@@ -56,7 +54,6 @@ if (isset($_POST["kijelentkezes"])) {
         <link rel="stylesheet" href="css/animate.css">
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" type="text/css" href="css/admin.css">
 
 
 
@@ -100,7 +97,7 @@ if (isset($_POST["kijelentkezes"])) {
         <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navigation w-nav">
             <div class="navigation-wrap">
                 <a href="index.php" class="logo-link w-nav-brand">
-                <img src="kep/logo.png"  alt="" class="logo-image"/>
+                <img src="kepek/logo.png"  alt="" class="logo-image"/>
                 </a>
                 <div class="menu">
                 <nav role="navigation" class="navigation-items w-nav-menu">
@@ -161,87 +158,58 @@ if (!isset($_SESSION["neve"])) {
                 </div>
             </div>
         </div>
-        <div class="keresesevent">
-            <h1>kinek?</h1>
-        <form class="form-inline" method="post"  id="keres" > 
-        <label style="display:inline;">Mindenkinek</label>
-        <input style="margin-right:10px;" type="checkbox" name="nev" id="kereses2" value="" >
-        <?php
-        
-        $tartalom = "";
-        $lekerdezes4 = $kapcsolat->query("select * from jegytipus ");
-         while($sor = $lekerdezes4->fetch_assoc()){
-         $tartalom .='
-         
-         <label style="display:inline;"> '.$sor['nev'].'</label>
-         <input style="margin-right:10px;" type="checkbox" name="nev" id="kereses2" value="'.$sor['nev'].'">
-        ';
-        
-        }
-        print($tartalom);
-        ?>
-            <button type="submit">kereses</button>
-       
-         </form>
-         </div> 
-   
-    
-       <?php
-
-
-
-$nev = $_POST['nev'];
-
- $lekerdezes = $kapcsolat->query("select * from events WHERE type  like '".$nev."%' AND statusz != 'privat'");
-
-?>
-      
-       <div class="flex-container">
- <?php 
- $tartalom = "";
-            while($sor = $lekerdezes->fetch_assoc()){
-                $tartalom .='
-                <section class="team-slider wf-section">
-            <div class="div-block-2">
-            
-                <div class="team-block">
-                    <div class="top">
-                    <img src="'.$sor['kep'].'" loading="lazy" alt="" class="team-member-image-two"/>
-                    <div class="type"><strong><span class="text2">  '.$sor['type'].'</span></strong></div>
-                    <div class="nev"><h3 >'.$sor['event'].'</h3></div>
-                    </div>
-                    
-                    
-                    <div class="team-block-info">
-                   
-                        <p class="team-member-text"><span class="text">'.  $sor['leiras'].'</span></p>
-                        <form action="" method="post">
-                           <button type="submit" style="background-color:gray;  color:white;"> tudjmegtöbbet..</button>
-                        </form>
-                       
-                        <div>
-                        <p class="team-member-text" style=""><b>'.$sor['ferohely'].' FÕ</b></p>  <p class="team-member-text" style=""><b>'.$sor['mikor'].'</b></p>
+        <div class="section">
+            <div class="container">
+                <div class="section-heading-wrap">
+                    <p>kinek</p>
+                    <p>mikor</p>
+                </div>
+                <div class="w-layout-grid team-members">
+                    <div id="w-node-c28cc763-f708-1e61-f196-6bd9fce9803c-caf3ed97">
+                        <div class="team-pic"></div>
+                        <div class="team-member-title-wrap">
+                            <div class="team-member-name">Michael Fassbender</div>
+                            <div class="paragraph-light">CEO</div>
                         </div>
-                        
-                        
-                            <div class="arrow-embed w-embed">
-                               <form action="" method="post">
-                                <button type="submit" style="background-color:gray; width:100%; color:white;">Jegyvarsarlas-></button>
-                               </form>
-                            </div>
-                       
+                    </div>
+                    <div id="w-node-c28cc763-f708-1e61-f196-6bd9fce98043-caf3ed97">
+                        <div class="team-pic"></div>
+                        <div class="team-member-title-wrap">
+                            <div class="team-member-name">Jason Smith</div>
+                            <div class="paragraph-light">Product Designer</div>
+                        </div>
+                    </div>
+                    <div id="w-node-c28cc763-f708-1e61-f196-6bd9fce9804a-caf3ed97">
+                        <div class="team-pic"></div>
+                        <div class="team-member-title-wrap">
+                            <div class="team-member-name">Amanda Peterson</div>
+                            <div class="paragraph-light">Design Director</div>
+                        </div>
+                    </div>
+                    <div id="w-node-c28cc763-f708-1e61-f196-6bd9fce98051-caf3ed97">
+                        <div class="team-pic"></div>
+                        <div class="team-member-title-wrap">
+                            <div class="team-member-name">Billy Maxwell</div>
+                            <div class="paragraph-light">Lead Developer</div>
+                        </div>
+                    </div>
+                    <div id="w-node-c28cc763-f708-1e61-f196-6bd9fce98058-caf3ed97">
+                        <div class="team-pic"></div>
+                        <div class="team-member-title-wrap">
+                            <div class="team-member-name">Joshua Harris</div>
+                            <div class="paragraph-light">CTO</div>
+                        </div>
+                    </div>
+                    <div id="w-node-c28cc763-f708-1e61-f196-6bd9fce9805f-caf3ed97">
+                        <div class="team-pic"></div>
+                        <div class="team-member-title-wrap">
+                            <div class="team-member-name">Esther Ford</div>
+                            <div class="paragraph-light">Recruiter</div>
+                        </div>
                     </div>
                 </div>
-                
             </div>
-        </section>';
-                 
-            }
-            print($tartalom);
-        
-
-?>
-</div>
+        </div>
         <div class="section">
             <section class="footer-dark wf-section">
                 <div class="container-2">
@@ -297,11 +265,3 @@ $nev = $_POST['nev'];
        
     </body>
 </html>
-<style>
-    .intro-header.cc-subpage {
-  height: 340px;
-  background-color: #000;
-  background-image: none;
-  color: #fff;
-}
-</style>

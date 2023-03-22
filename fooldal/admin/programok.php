@@ -46,7 +46,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">    
-       
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <link rel="stylesheet" type="text/css" href="css/admin.css">
         
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
@@ -76,20 +76,16 @@
         </div>
     </div>
     <div class="container2"  id="tablazat">
-  
-       <div class="eventplus"  id="tablazat">
-    <button  class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
-          +eventletrehozzas
-      </button>  
+       
 
-      </div>
-<?php include('eventtabla.php'); ?>
+    
+<?php include('eventtabla.php'); ?></div>
 </div>
 
     <?php
-   
+    
+  
     ?>
-   
     
 <!-- Latest minified bootstrap css -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -101,16 +97,17 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- Button to trigger modal -->
 
- 
+<?php
+    
+  if(!isset($_GET['id']))
+  {
+    
+    ?>
+    <div class="jegyhozzbtn">
+    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalForm">
+    eventletrehozzas
+</button> 
 <!-- Modal -->
-<div class="modal fade" id="modalForm1" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content modal1">
-        </div>
-    </div>
-</div>
-
-
 <div class="modal fade" id="modalForm" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -122,29 +119,24 @@
                 </button>
                 <h4 class="modal-title" id="myModalLabel">eventletrehozzas</h4>
             </div>
-             
             <!-- Modal Body -->
             <div class="modal-body">
-                <div style=" margin: auto; width: 50%;  padding: 10px;"> 
-                <h4><p class="statusMsg"><span id="myspan" style="text-align: center; color:red;" ></span></p></h4>
-                </div>
-               
+                <p class="statusMsg"></p>
                 <form method="post" action="eventmentes.php" id="insert_form" enctype="multipart/form-data">
-                
                     <div class="form-group">
                         <label >Név</label>
-                        <input type="text" class="form-control input1"  name="nev" id="nev" placeholder="Add meg a nevét"/>
+                        <input type="text" class="form-control"  name="nev" id="nev" placeholder="Add meg a nevét"/>
                     </div>
                     <div class="form-group">
                         <label >időpont</label>
-                        <input type="date" id="idopont" name="idopont" class="input1">
+                        <input type="date" id="idopont" name="idopont" >
                     <div class="form-group">
                       <label  class="control-label">leiras</label>							
-                      <textarea class="form-control input1" rows="5" id="leiras" name="leiras"></textarea>							
+                      <textarea class="form-control" rows="5" id="leiras" name="leiras"></textarea>							
                     </div>	
                     <div class="form-group">
                         <label >tipus</label>
-                        <select id="tipus" name="tipus" >
+                        <select id="tipus" name="tipus">
                           <?php 
                           $kapcsolat = new mysqli("localhost", "root", "", "darkbluemoon");
                           $lekerdezes = $kapcsolat->query("select * from jegytipus");
@@ -158,35 +150,35 @@
                     </div>
                     <div class="form-group">
                         <label >férőhely</label>
-                        <input type="number"class="form-control input1" id="ferohely" name="ferohely"  placeholder="1"/>
+                        <input type="number"class="form-control" id="ferohely" name="ferohely" placeholder="1"/>
                     </div>
                     <div class="form-group">
                         <label >statusz</label>
-                        <select id="statusz" name="statusz" >
+                        <select id="statusz" name="statusz">
                         <option value="privat">Privat</option>
-                        <option value="publikus">publikus</option>
+                        <option value="privat">publikus</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label >kep</label>
-                        <input  class="form-control input1" type="file" name="feltolt" id="feltolt" >
+                        <input  class="form-control" type="file" name="feltolt" id="feltolt">
                     <div class="form-group">
                         <div id="selected-images"></div>
 
-                      <!-- Modal Footer -->
-            <div class="modal-footer">
-                <button type="button"  class="btn btn-default" data-dismiss="modal">Close</button>
-                <input type="submit" onClick="openModel()"  name="insert" id="insert" value="Insert" class="btn btn-success"/>
-            </div>
+                    <input type="submit"  name="insert" id="insert" value="Insert" class="btn btn-success"/>
                 </form>
             </div>
              
-          
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button"  class="btn btn-default" data-dismiss="modal">Close</button>
+                
+            </div>
         </div>
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6404dcc77e2407dfb2f3ed83" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://uploads-ssl.webflow.com/6404dcc77e2407dfb2f3ed83/js/webflow.1d3869c5a.js" type="text/javascript"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
@@ -198,55 +190,22 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<!-- Bootstrap JS -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php
+    
+                            }
+    ?>
+    
 
     <script>
-         $("#insert ").on('click', function() {
-  
-  
-            event.preventDefault();
-
-            $('.input1').css("border-color", "#ccc");
-            $('#idopont').css("background-color", "#ccc");
-            var a = true;
-           
-        if($('#nev').val() == "")  
-        {  
-            
-            $('#nev').css("border-color", "red");
-            a = false;
-           
-        }
-        if($('#idopont').val() == '')
-        {  
-           
-            $('#idopont').css("background-color", "#d29a9a");
-            a = false;
-        }
-        if($('#leiras').val() == '')  
-        {  
-            
-            $('#leiras').css("border-color", "red");
-            a = false;
-        }  
-        if($('#ferohely').val() == '')
-        {  
-           
-            $('#ferohely').css("border-color", "red");
-            a = false;
-        }
-       else if (a== true){$("#insert_form").submit();}
-        else (a == false)
-        {  
-            document.getElementById("myspan").innerHTML="Minden mező kitöltése kötelező";
-            
-        }
-         
-    
-});
- 
- 
-    </script>
+        (document).ready(function(){
+		$('table').dataTable()
+	})
+	
+	$('.szerk').click(function(){
+		location.href ="index.php?page=view_event&id="+$(this).attr('data-id')
+		
+	})
+</script>
 <style>
 
 </style>

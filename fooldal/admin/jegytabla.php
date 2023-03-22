@@ -7,7 +7,7 @@ $kapcsolat = new mysqli("localhost", "root", "", "darkbluemoon");
        
 
   $tartalom = "";
-        print(' <div id="table-scroll">
+        print(' 
                 <table style="width:100%" class="styled-table">
             <thead><tr>
                 <th>ID</th>
@@ -24,20 +24,15 @@ $kapcsolat = new mysqli("localhost", "root", "", "darkbluemoon");
                         <td>'.$sor['nev'].'</td>
                         <td>'.$sor['tipus'].'</td>
                         <td>'.$sor['ar'].'</td>
-                        <td><a data-toggle="modal"  data-target="#modalForm1" id="jegy_modal" data-id="'.$sor['jegy_id'].'"  class="btn btn-success btn-lg" href="#modalForm">
-                        szerkesztés</a>
-                        <form action="jegytorles.php?id='.$sor['jegy_id'].'" method="post" id="tor">
-                        <button class="torles" type="submit">Törlés</button> 
+                        <form method="post">
+                        <td><a name="szerkesztes" href="?id='.$sor['jegy_id'].'">Szerkesztés</a></td>
                         </form>
-                        
-                        </td>
                         </tr>';
                         
                     }
                     print($tartalom);
 
-                    print "</tbody></table>
-                    </div>";
+                    print "</tbody></table>";
 
 
 

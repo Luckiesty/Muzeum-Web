@@ -8,45 +8,49 @@
 .container
 {
     position: relative;
-    
+    top: 200px;
     background-color: slategray;
     
     
 }
-.kereses
-{
-  position: relative;
-  width: 50%;
-  margin: auto;
-  top: 20px;
-
-}
-.eventplus
-{
-  position: relative;
-left: 60px;
-}
 .container2
 {
     position: relative;
- 
-
-    margin: auto;
-    width: 70%;
-    border: 3px solid green;
-    padding: 10px;
-    top: 50px;
-}
-#table-scroll {
-  height:400px;
-  overflow:auto;  
-  margin-top:20px;
+    top: 280px;
+    width: 100px;
+    left: 20%;
 }
 table, th, td {
   border: 1px solid black;
   border-collapse:collapse;
 }
+.szerkesztes2
+{
+  background-color:seashell;
+  position: relative;
+bottom: 300px;
+  left: 600px;
+  width: 400px;
+  text-align: center;
+  display: flex;
+flex-direction: column;
+width: 25vw;
 
+
+}
+.szerkesztes3
+{
+  background-color:seashell;
+  position: relative;
+  left: 1050px;
+  width: 400px;
+  text-align: center;
+  display: flex;
+flex-direction: column;
+width: 25vw;
+
+
+}
 
 form {
   display: flex;
@@ -91,11 +95,6 @@ div {
     font-family: sans-serif;
     min-width: 300px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    margin: auto;
-   
-    
-    
-
 }
 .styled-table thead tr {
     background-color: #009879;
@@ -121,4 +120,3 @@ div {
     font-weight: bold;
     color: #009879;
 }
-

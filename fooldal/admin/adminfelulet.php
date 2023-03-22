@@ -118,62 +118,9 @@
         <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
   <script src="js/admin.js"></script>
-    <!-- Latest minified bootstrap css -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
- 
- <!-- jQuery library -->
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  
- <!-- Latest minified bootstrap js -->
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- <!-- Button to trigger modal -->
+    
 
-        <!-- Modal -->
-<div class="modal fade" id="modalForm" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-          
-        </div>
-    </div>
-</div>
 
-	
-        
-        <script>
-            $('.torles').on('click' ,function(a)
-                          {
-                              
-                              a.preventDefault();
-                              Swal.fire({
-                                  title: 'Biztos törlöni akarod?', 
-                                  text: "Nem fogod tudodni visszaállítani!",
-                                  type: 'warning',
-                                  icon: 'warning',
-                                  showCancelButton: true,
-                                  confirmButtonColor: '#3085d6',
-                                  cancelButtonColor: '#d33',
-                                  confirmButtonText: 'törlés',
-                                  }).then((result) => { 
-                                      if (result.value) 
-                                      {
-                                          var $form = $( '#tor' ),
-                                          url = $form.attr( "action" );
-                                          console.log(url);
-                                          // Send the data using post
-                                          var posting = $.post( url );
-      
-                                          posting.done(function( data ) {
-                                              location.reload();
-                                             
-                                          });
-                                          
-                                        
-                                          
-                                      }
-                                  })
-                              });
-         
-        </script>
 <style>
 
 </style>

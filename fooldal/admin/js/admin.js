@@ -76,7 +76,6 @@ $('.fris').on('click' ,function(e)
                     
                     });
 
-<<<<<<< HEAD
 
                     
             $('.torles').on('click' ,function(a)
@@ -116,22 +115,6 @@ $('.fris').on('click' ,function(e)
                     })
                 })
     
-=======
-                  
-           
-          
-                $("#felhasznalomodal").on('click', function() {
-          
-          
-                    var id = $(this).data("id");
-                  $.ajax({url:"felhasznalok_modal.php?id="+id,cache:false,success:function(result){
-                          $(".modal-content").html(result);
-                           
-                      }});
-                });
-          
-               
->>>>>>> 740541d6dee3a90aebbeef4b011316910f73e658
 
                 $('.event').on('click' ,function(e)
                 {

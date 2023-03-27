@@ -186,7 +186,6 @@
 	<!-- Bootstrap JS -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<<<<<<< HEAD
 
     <script>
  /*         function adduser(){
@@ -216,44 +215,6 @@
 
 
 
-=======
-<script>
-
-  $('.torles').on('click' ,function(a)
-                          {
-                              
-                              a.preventDefault();
-                              Swal.fire({
-                                  title: 'Biztos törlöni akarod?', 
-                                  text: "Nem fogod tudodni visszaállítani!",
-                                  type: 'warning',
-                                  icon: 'warning',
-                                  showCancelButton: true,
-                                  confirmButtonColor: '#3085d6',
-                                  cancelButtonColor: '#d33',
-                                  confirmButtonText: 'törlés',
-                                  }).then((result) => { 
-                                      if (result.value) 
-                                      {
-                                          var $form = $( '#tor' ),
-                                          id = $form.find( "#id" ).val(),
-                                          url = $form.attr( "action" );
-                                          console.log(id);
-                                          // Send the data using post
-                                          var posting = $.post( url , { id: id} );
-      
-                                          posting.done(function( data) {
-                                             $("#tablazat").html(data);
-                                             
-                                          });
-                                          
-                                        
-                                          
-                                      }
-                                  })
-                              });
-         
->>>>>>> 740541d6dee3a90aebbeef4b011316910f73e658
 </script>
 
 </body>

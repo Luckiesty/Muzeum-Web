@@ -1,7 +1,8 @@
 <?php
 $kapcsolat = new mysqli("localhost", "root", "", "darkbluemoon");
 
-$nev = $_POST['nev'];
+
+    $nev = $_POST['nev'];
 
  $lekerdezes = $kapcsolat->query("select * from felhasznalok WHERE neve  like '".$nev."%'");
 
@@ -34,15 +35,10 @@ $nev = $_POST['nev'];
                     }
                     print($tartalom);
 
-<<<<<<< HEAD
                     print "</tbody></table>";
 
  
    
                     
-=======
-                    print "</tbody></table></div>";
-             
->>>>>>> 740541d6dee3a90aebbeef4b011316910f73e658
 
 ?>

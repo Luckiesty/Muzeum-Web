@@ -64,9 +64,9 @@ if(!empty($_GET["muvelet"]))
 </head>
 <body>
 <div id="shopping-cart">
-<div class="txt-heading">Bevásárló kosár</div>
+<div class="txt-heading">Shopping Cart</div>
 
-<a id="btnEmpty" href="webshop.php?action=empty">Kosár ürítése</a>
+<a id="btnEmpty" href="index.php?action=empty">Empty Cart</a>
 <?php
 if(isset($_SESSION["cart_item"])){
     $total_quantity = 0;
@@ -75,12 +75,12 @@ if(isset($_SESSION["cart_item"])){
 <table class="tbl-cart" cellpadding="10" cellspacing="1">
 <tbody>
 <tr>
-<th style="text-align:left;">Név</th>
-<th style="text-align:left;">Kód</th>
-<th style="text-align:right;" width="5%">Mennyiség</th>
-<th style="text-align:right;" width="10%">Darab Ár</th>
-<th style="text-align:right;" width="10%">Ár</th>
-<th style="text-align:center;" width="5%">Eltávolítás</th>
+<th style="text-align:left;">Name</th>
+<th style="text-align:left;">Code</th>
+<th style="text-align:right;" width="5%">Quantity</th>
+<th style="text-align:right;" width="10%">Unit Price</th>
+<th style="text-align:right;" width="10%">Price</th>
+<th style="text-align:center;" width="5%">Remove</th>
 </tr>	
 <?php		
     foreach ($_SESSION["cart_item"] as $item){
@@ -92,7 +92,7 @@ if(isset($_SESSION["cart_item"])){
 				<td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
 				<td  style="text-align:right;"><?php echo "$ ".$item["price"]; ?></td>
 				<td  style="text-align:right;"><?php echo "$ ". number_format($item_price,2); ?></td>
-				<td style="text-align:center;"><a href="webshop.php?action=remove&code=<?php echo $item["code"]; ?>" class="btnRemoveAction"><img src="icon-delete.png" alt="Remove Item" /></a></td>
+				<td style="text-align:center;"><a href="index.php?action=remove&code=<?php echo $item["code"]; ?>" class="btnRemoveAction"><img src="icon-delete.png" alt="Remove Item" /></a></td>
 				</tr>
 				<?php
 				$total_quantity += $item["quantity"];
@@ -101,7 +101,7 @@ if(isset($_SESSION["cart_item"])){
 		?>
 
 <tr>
-<td colspan="2" align="right">Végösszeg:</td>
+<td colspan="2" align="right">Total:</td>
 <td align="right"><?php echo $total_quantity; ?></td>
 <td align="right" colspan="2"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></td>
 <td></td>
@@ -111,7 +111,7 @@ if(isset($_SESSION["cart_item"])){
   <?php
 } else {
 ?>
-<div class="no-records">A kosara üres</div>
+<div class="no-records">Your Cart is Empty</div>
 <?php 
 }
 ?>
@@ -122,7 +122,7 @@ if (!empty($product_array)) {
 	foreach($product_array as $key=>$value){
 ?>
 	<div class="product-item">
-		<form method="post" action="webshop.php?action=add&code=<?php echo $product_array[$key]["termek_kod"]; ?>">
+		<form method="post" action="index.php?action=add&code=<?php echo $product_array[$key]["termek_kod"]; ?>">
 		<div class="product-image"><img src="<?php echo $product_array[$key]["termek_kep"]; ?>"></div>
 		<div class="product-tile-footer">
 		<div class="product-title"><?php echo utf8_encode($product_array[$key]["termek_nev"]); ?></div>

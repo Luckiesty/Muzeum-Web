@@ -61,9 +61,9 @@ body {
 	border: #E0E0E0 1px solid;
 }
 
-.product-image {
-	height: 300px;
-	width: 200px;
+#product-image {
+	height: 600px;
+	width: 600px;
 	background-color: #FFF;
 }
 

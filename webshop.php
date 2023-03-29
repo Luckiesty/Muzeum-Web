@@ -68,7 +68,7 @@ if(!empty($_GET["muvelet"]))
 
 <a id="btnEmpty" href="webshop.php?action=empty">Kosár ürítése</a>
 <?php
-if(isset($_SESSION["cart_item"])){
+if(isset($_SESSION["kosar_targyak"])){
     $total_quantity = 0;
     $total_price = 0;
 ?>	
@@ -83,20 +83,20 @@ if(isset($_SESSION["cart_item"])){
 <th style="text-align:center;" width="5%">Eltávolítás</th>
 </tr>	
 <?php		
-    foreach ($_SESSION["cart_item"] as $item){
-        $item_price = $item["quantity"]*$item["price"];
+    foreach ($_SESSION["kosar_targyak"] as $item){
+        $item_price = $item["mennyiseg"]*$item["termek_ar"];
 		?>
 				<tr>
-				<td><img src="<?php echo $item["image"]; ?>" class="cart-item-image" /><?php echo $item["name"]; ?></td>
-				<td><?php echo $item["code"]; ?></td>
-				<td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
-				<td  style="text-align:right;"><?php echo "$ ".$item["price"]; ?></td>
+				<td><img src="<?php echo $item["termek_kep"]; ?>" class="cart-item-image" /><?php echo $item["termek_nev"]; ?></td>
+				<td><?php echo $item["termek_kod"]; ?></td>
+				<td style="text-align:right;"><?php echo $item["mennyiseg"]; ?></td>
+				<td  style="text-align:right;"><?php echo "$ ".$item["termek_ar"]; ?></td>
 				<td  style="text-align:right;"><?php echo "$ ". number_format($item_price,2); ?></td>
-				<td style="text-align:center;"><a href="webshop.php?action=remove&code=<?php echo $item["code"]; ?>" class="btnRemoveAction"><img src="icon-delete.png" alt="Remove Item" /></a></td>
+				<td style="text-align:center;"><a href="webshop.php?action=remove&code=<?php echo $item["termek_kod"]; ?>" class="btnRemoveAction"><img src="icon-delete.png" alt="Remove Item" /></a></td>
 				</tr>
 				<?php
-				$total_quantity += $item["quantity"];
-				$total_price += ($item["price"]*$item["quantity"]);
+				$total_quantity += $item["mennyiseg"];
+				$total_price += ($item["termek_ar"]*$item["mennyiseg"]);
 		}
 		?>
 
@@ -123,7 +123,7 @@ if (!empty($product_array)) {
 ?>
 	<div class="product-item">
 		<form method="post" action="webshop.php?action=add&code=<?php echo $product_array[$key]["termek_kod"]; ?>">
-		<div class="product-image"><img src="<?php echo $product_array[$key]["termek_kep"]; ?>"></div>
+		<div id="product-image"><img src="<?php echo $product_array[$key]["termek_kep"]; ?>"></div>
 		<div class="product-tile-footer">
 		<div class="product-title"><?php echo utf8_encode($product_array[$key]["termek_nev"]); ?></div>
 		<div class="product-price"><?php echo $product_array[$key]["termek_ar"]. " Ft"; ?></div>

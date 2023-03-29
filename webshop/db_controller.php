@@ -33,27 +33,21 @@
         
 
 
-        function runQuery($query)
-        {
-            $result = mysqli_query($this->conn, $query);
-            while($row = $result -> fetch_assoc())
-            {
-                $resultSet[] = $row;
-            }
-            if(!empty($resultSet))
-            {
-                return $resultSet;
-            }
+        function runQuery($query) {
+            $result = mysqli_query($this->conn,$query);
+            while($row=mysqli_fetch_assoc($result)) {
+                $resultset[] = $row;
+            }		
+            if(!empty($resultset))
+                return $resultset;
         }
-
-        function numRows($query)
-        {
-            $result = mysqli_query($this->conn, $query);
+        
+        function numRows($query) {
+            $result  = mysqli_query($this->conn,$query);
             $rowcount = mysqli_num_rows($result);
-            return $rowcount;
+            return $rowcount;	
         }
     }
-
     
     
 ?>

@@ -17,6 +17,7 @@ if(!empty($_GET["muvelet"]))
 					'termek_kep' => $productByCode[0]["termek_kep"]
 				));
 			}
+			
 
 			if(!empty($_SESSION["kosar_targyak"])) {
 				if(in_array($productByCode[0]["termek_kod"],array_keys($_SESSION["kosar_targyak"]))) {
@@ -52,8 +53,7 @@ if(!empty($_GET["muvelet"]))
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="hu">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -116,24 +116,27 @@ if(isset($_SESSION["kosar_targyak"])){
 }
 ?>
 </div>
-<?php
-$product_array = $db_handle->runQuery("SELECT * FROM termek_tabla ORDER BY id ASC");
-if (!empty($product_array)) { 
-	foreach($product_array as $key=>$value){
-?>
-	<div class="product-item">
-		<form method="post" action="webshop.php?action=add&code=<?php echo $product_array[$key]["termek_kod"]; ?>">
-		<div id="product-image"><img src="<?php echo $product_array[$key]["termek_kep"]; ?>"></div>
-		<div class="product-tile-footer">
-		<div class="product-title"><?php echo utf8_encode($product_array[$key]["termek_nev"]); ?></div>
-		<div class="product-price"><?php echo $product_array[$key]["termek_ar"]. " Ft"; ?></div>
-		<div class="cart-action"><input type="text" class="product-quantity" name="mennyiseg" value="1" size="2" /><input type="submit" value="Kosárhoz hozzáadás" class="btnAddAction" /></div>
+<div id="product-grid">
+	<div class="text-heading">Termékek</div>
+	<?php
+	$product_array = $db_handle->runQuery("SELECT * FROM termek_tabla ORDER BY id ASC");
+	if (!empty($product_array)) { 
+		foreach($product_array as $key=>$value){
+	?>
+		<div class="product-item">
+			<form method="post" action="webshop.php?action=add&code=<?php echo $product_array[$key]["termek_kod"]; ?>">
+			<div id="product-image"><img src="<?php echo $product_array[$key]["termek_kep"]; ?>"></div>
+			<div class="product-tile-footer">
+			<div class="product-title"><?php echo utf8_encode($product_array[$key]["termek_nev"]); ?></div>
+			<div class="product-price"><?php echo $product_array[$key]["termek_ar"]. " Ft"; ?></div>
+			<div class="cart-action"><input type="text" class="product-quantity" name="mennyiseg" value="1" size="2" /><input type="submit" value="Kosárhoz hozzáadás" class="btnAddAction" /></div>
+			</div>
+			</form>
 		</div>
-		</form>
-	</div>
-<?php
+	<?php
+		}
 	}
-}
-?>
+	?>
+</div>
 </body>
 </html>

@@ -112,7 +112,7 @@ if (isset($_POST["kijelentkezes"])) {
                         <a href="programok.php" class="navigation-item w-nav-link">Programok</a>
                         <a href="/blog" class="navigation-item w-nav-link">Gyűjtemények</a>
                         <a href="/contact" class="navigation-item w-nav-link">Elérhetőségeink</a>
-                        <a href="webshop.php" class="navigation-item w-nav-link">Múzeumshop</a>    
+                        <a href="/webshop" class="navigation-item w-nav-link">Múzeumshop</a>    
                         
                                                  
                       <?php 

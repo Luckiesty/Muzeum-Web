@@ -1,5 +1,5 @@
 <?php 
-require_once("webshop/db_controller.php");
+require_once("db_controller.php");
 $db_handle = new DB_Kontroller();
 if(!empty($_GET["action"])) {
 	switch($_GET["action"]) {
@@ -45,7 +45,7 @@ if(!empty($_GET["action"])) {
 	<html>
 	<head>
 	<title>Múzeum Shop</title>
-	<link rel="stylesheet" href="webshop/webshop_style.css">
+	<link rel="stylesheet" href="webshop_style.css">
 	</head>
 	<body>
 	<div id="shopping-cart">

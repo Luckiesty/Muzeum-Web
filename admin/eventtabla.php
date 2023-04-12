@@ -25,7 +25,7 @@ $kapcsolat = new mysqli("localhost", "root", "", "darkbluemoon");
                         <tr>
                         <td>'.$sor['id'].'</td>
                         <td>'.$sor['event'].'</td>
-                        <td ><span class="text">'.$sor['leiras'].'</span></td>
+                        <td ><span class="text2" >'.$sor['leiras'].'</span></td>
                         <td>'.$sor['mikor'].'</td>
                         <td>'.$sor['type'].'</td>
                         <td>'.$sor['ferohely'].'</td>

@@ -23,17 +23,7 @@ class Login
         }
     }
     
-    function BeVanEJelentkezve()
-    {
-        if (isset($_SESSION["neve"])) 
-        {
-            return true;
-        } else 
-        {
-            return false;
-        }
-    }
-    
+
 }
 $peldanyositas_bejel = new Login();
 if (isset($_POST["neve"]) && isset($_POST["jelszava"])) {
@@ -123,11 +113,13 @@ if (isset($_POST["kijelentkezes"])) {
                          if(isset($_SESSION['neve']))
                          {
                            
-                           print('<a class="w-nav-link" data-toggle="modal"  data-target="#modalForm"  href="#modalForm"><img class="profilkep1"  src="'.$_SESSION['profilkep'].'" alt=""> </a>');
+                           print('<a class="w-nav-link" data-toggle="modal"  data-target="#modalForm"  href="#modalForm">
+                           <img class="profilkep1"  src="'.$_SESSION['profilkep'].'" alt=""> </a>');
                             
                           
    
-                           $sqlkapcsolat2 = $kapcsolat->query("SELECT * FROM felhasznalok WHERE id=". $_SESSION['id'] . " AND statusz='admin'");
+                           $sqlkapcsolat2 = $kapcsolat->query("SELECT * FROM felhasznalok 
+                           WHERE id=". $_SESSION['id'] . " AND statusz='admin'");
                            if($sqlkapcsolat2->num_rows == 1)
                            {
                                print(' <a href="admin/adminfelulet.php" aria-current="page" class="navigation-item w-nav-link">
@@ -202,7 +194,8 @@ if (!isset($_SESSION["neve"])) {
          $tartalom .='
          
          <label style="display:inline;"> '.$sor['nev'].'</label>
-         <input style="margin-right:10px;" type="checkbox" name="nev" class="check" id="kereses'.$j.'" value="'.$sor['nev'].'">
+         <input style="margin-right:10px;" type="checkbox" name="nev" 
+         class="check" id="kereses'.$j.'" value="'.$sor['nev'].'">
         ';
         $j++;
         }

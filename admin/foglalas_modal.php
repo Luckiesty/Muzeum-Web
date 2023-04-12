@@ -11,7 +11,7 @@ $id = $_GET['id'];
                 <span aria-hidden="true">×</span>
                 <span class="sr-only">Close</span>
             </button>
-            <h4 class="modal-title" id="myModalLabel">event szerkesztese</h4>
+            <h4 class="modal-title" id="myModalLabel">foglalás szerkesztése</h4>
         </div>
          
         <!-- Modal Body -->

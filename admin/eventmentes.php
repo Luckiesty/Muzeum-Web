@@ -54,6 +54,14 @@
           '" . $tipus . "', " . $ferohely . ", '" . $statusz . "', '" . $celfajl . "');";
   
   if ($kapcsolat->query($sql) === TRUE) {
+   
+    $lekerdezes2 = $kapcsolat->query("select *  from events  WHERE event ='".$nev."';");
+    if($sor = $lekerdezes2->fetch_assoc()){
+     
+      $sql2 = "INSERT INTO `foglalas` ( `felhasznalo_id`, `esemeny_id`, `nev`, `email`, `elerhetoseg`, `mennyiseg`, `statusz`, `code`) VALUES ('', '".$sor['id']."', '', '', '', '', 'kerelem', '');";
+    $result = mysqli_query($kapcsolat,$sql2);
+  }
+    
      echo "New record created successfully";
      $source = $celfajl; 
      $destination = '../kep/'.$name.'';
@@ -80,11 +88,18 @@
       $elemszam=count($mappa_elemek);
       header("location: programok.php");
     }else{
+     
       $sql ="INSERT INTO events (`event`,`leiras`,`mikor`,`type`,`ferohely`,`statusz`) 
   VALUES ('" . $nev . "', '" . $leiras . "', '" .$idopont . "' , 
   '" . $tipus . "', " . $ferohely . ", '" . $statusz . "');";
   $result = mysqli_query($kapcsolat,$sql);
   if ($result) {
+    $lekerdezes2 = $kapcsolat->query("select *  from events  WHERE event = '".$nev."';");
+    if($sor = $lekerdezes2->fetch_assoc()){
+     
+      $sql2 = "INSERT INTO `foglalas` ( `felhasznalo_id`, `esemeny_id`, `nev`, `email`, `elerhetoseg`, `mennyiseg`, `statusz`, `code`) VALUES ('', '".$sor['id']."', '', '', '', '', 'kerelem', '');";
+    $result = mysqli_query($kapcsolat,$sql2);
+  }
     header("location: programok.php");
     } 
       

@@ -2,49 +2,6 @@
 session_start();
 error_reporting(0);
 $kapcsolat = new mysqli("localhost", "root", "", "darkbluemoon");
-class Login
-{
-    public mysqli $db_csatlakozas;
-    function __construct()
-    {
-        $this->db_csatlakozas = new mysqli("localhost", "root", "", "darkbluemoon");
-    }
-
-    function Bejelentkezes($nev, $jelszo)
-    {
-        $tabla_lekeres = $this->db_csatlakozas->query("SELECT * FROM felhasznalok WHERE neve = '" . $nev . "' AND jelszava = '".md5($jelszo) . "'");
-        if ($adatok = $tabla_lekeres->fetch_assoc()) {
-            $_SESSION["neve"] = $adatok["neve"];
-            $_SESSION["id"] = $adatok["id"];
-            $_SESSION["profilkep"] = $adatok["profilkep"];
-            header("Location: ./home.php");
-        } else {
-           echo "<script> alert('Sikertelen Bejentkezés! Próbál újra!'); windows.location='index.php'</script>";
-        }
-    }
-    
-    function BeVanEJelentkezve()
-    {
-        if (isset($_SESSION["neve"])) 
-        {
-            return true;
-        } else 
-        {
-            return false;
-        }
-    }
-    
-}
-$peldanyositas_bejel = new Login();
-if (isset($_POST["neve"]) && isset($_POST["jelszava"])) {
-    $peldanyositas_bejel->Bejelentkezes($_POST["neve"], $_POST["jelszava"]);
-}
-
-if (isset($_POST["kijelentkezes"])) {
-    session_unset(); 
-     session_destroy();
-     header("Location: http://projectmunka.loc/");
- }
 ?>
 <!DOCTYPE html>
 <html data-wf-domain="xraj01s-fantabulous-site.webflow.io" data-wf-page="6404dcc77e2407f8caf3ed97" data-wf-site="6404dcc77e2407dfb2f3ed83">
@@ -107,11 +64,11 @@ if (isset($_POST["kijelentkezes"])) {
                 </div>
             </div>
         </div>
+        <h1><a href="programok.php" class="navigation-item w-nav-link">Vissza</a> </h1>
         <div class="keresesevent">
             <h1>kinek?</h1>
         <form class="form-inline" method="post"  id="keres" > 
-        <label style="display:inline;">Mindenkinek</label>
-        <input style="margin-right:10px;" type="checkbox" name="nev" id="kereses2" value="" >
+        
         <?php
         
         $tartalom = "";
@@ -126,7 +83,7 @@ if (isset($_POST["kijelentkezes"])) {
         }
         print($tartalom);
         ?>
-            <button type="submit">kereses</button>
+          
        
          </form>
          </div> 
@@ -138,7 +95,7 @@ if (isset($_POST["kijelentkezes"])) {
 
 $nev = $_POST['nev'];
 
- $lekerdezes = $kapcsolat->query("select * from events WHERE type  like '".$nev."%' AND statusz != 'privat'");
+ $lekerdezes = $kapcsolat->query("select * from events WHERE type  like '".$nev."%' ");
 
 ?>
       

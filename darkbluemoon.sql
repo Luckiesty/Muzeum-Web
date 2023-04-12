@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Ápr 12. 11:18
--- Kiszolgáló verziója: 10.4.27-MariaDB
--- PHP verzió: 8.2.0
+-- Host: 127.0.0.1
+-- Generation Time: Apr 12, 2023 at 11:02 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Adatbázis: `darkbluemoon`
+-- Database: `darkbluemoon`
 --
 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `events`
+-- Table structure for table `events`
 --
 
 CREATE TABLE `events` (
@@ -36,12 +36,22 @@ CREATE TABLE `events` (
   `ferohely` int(30) NOT NULL DEFAULT 0,
   `statusz` varchar(255) NOT NULL DEFAULT 'privat',
   `kep` varchar(255) NOT NULL DEFAULT 'kep/default.jpg'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`id`, `event`, `leiras`, `mikor`, `type`, `ferohely`, `statusz`, `kep`) VALUES
+(156, 'Az elmúlt év fotói ', 'Kerülj közel a csillagokhoz. Látogassa meg az Év Csillagászati ​​Fotósa című kiállítást a Nemzeti Tengerészeti Múzeumban, és tekintse meg a 13. évfolyamon a pályázat nyertes és előválogatott képeit. Tekintse meg a több mint 100 fényképet, amelyeken a művészek megörökítették a helyi égboltot és azon túl is, távoli csillagok és aurórák képeivel. A bemutatott fényképek a világ minden tájáról származnak.', '2024-01-19', 'családijegy', 35, 'publikus', 'kep/image.jpg'),
+(157, 'Egy pillantás az égre', 'Tegyen egy interaktív utazást a Naprendszerben, és tekintse meg közelebbről a távoli bolygókat; A teleszkópok azt mutatják, hogy az általunk látott csillagok körülbelül fele nem csupán fényfoltok, hanem valójában csillagcsoportok, amelyeket a gravitáció tart össze. Működtessen távcsövet, kísérletezzen objektívekkel, hogy megértse, hogyan hoznak létre képeket a teleszkópok távoli tárgyakról.', '2024-02-12', 'Mindenkinek', 150, 'publikus', 'kep/resize.jpg'),
+(158, 'Csillagászati ​​Kiállítás', 'űrkutatás, az univerzum, a csillagászat és a csillagászati eszközök témaköreit mutatjuk be. A kiállítások általában interaktív és látványos módon mutatják be azokat az elméleteket, felfedezéseket és technológiákat, amelyeket a csillagászok és űrkutatók használnak az univerzum felfedezéséhez.', '2024-10-26T13:55', 'felnőtjegy', 50, 'publikus', 'kep/acsillagászat.jpg'),
+(159, 'Élet a földön kívül exhibit', '\r\nA Maryland Tudományos Központban megrendezett Life Beyond Earth kiállítás STEM-tartalma csillagászatot és földtudományt foglal magában, és kapcsolódik a NASA-hoz azáltal, hogy „az univerzum életének természetével és a Földön túl létező élettel” foglalkozik. izgalmas, bátorító és ápoló fiatal elméket” és a NASA Education Outcomes számára a STEM formális és informális oktatási szolgáltatói közötti partnerségek kiépítésével, az egész életen át tartó tanulás előmozdításával és a NASA küldetéseinek tudatosításával, valamint az informális környezetben történő tanulás ösztönzésével.', '2023-10-12', 'diákjegy', 100, 'privat', 'kep/MSC_Exhibit_Hall.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `felhasznalok`
+-- Table structure for table `felhasznalok`
 --
 
 CREATE TABLE `felhasznalok` (
@@ -51,28 +61,29 @@ CREATE TABLE `felhasznalok` (
   `profilkep` varchar(255) NOT NULL DEFAULT 'kepek/alapkep.jpg',
   `statusz` varchar(255) NOT NULL DEFAULT 'felhasznalo',
   `email` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- A tábla adatainak kiíratása `felhasznalok`
+-- Dumping data for table `felhasznalok`
 --
 
 INSERT INTO `felhasznalok` (`id`, `neve`, `jelszava`, `profilkep`, `statusz`, `email`) VALUES
-(40, 'asd3', '7815696ecbf1c96e6894b779456d330e', 'kepek/alapkep.jpg', 'admin', 'toh23@gmail.com'),
-(52, 'asd', '7815696ecbf1c96e6894b779456d330e', 'kepek/alapkep.jpg', 'felhasznalo', 'toth5845@gmail.com'),
-(55, '', 'd41d8cd98f00b204e9800998ecf8427e', 'kepek/alapkep.jpg', 'felhasznalo', ''),
-(57, 'asd4', '7815696ecbf1c96e6894b779456d330e', 'kepek/alapkep.jpg', 'felhasznalo', 'toth5845@gmail.com'),
-(58, 'asd5', '7815696ecbf1c96e6894b779456d330e', 'kepek/alapkep.jpg', 'felhasznalo', 'toth5845@gmail.com'),
-(59, 'asd6', '7815696ecbf1c96e6894b779456d330e', 'kepek/alapkep.jpg', 'felhasznalo', 'toth5845@gmail.com'),
-(60, 'asd7', '7815696ecbf1c96e6894b779456d330e', 'kepek/alapkep.jpg', 'felhasznalo', 'toth5845@gmail.com'),
-(61, 'asd8', '7815696ecbf1c96e6894b779456d330e', 'kepek/alapkep.jpg', 'felhasznalo', 'toth5845@gmail.com'),
-(62, 'admin', 'b7d8607bed91d27de174c25a64cce4a4', 'profilkepek/patrick.jpg', 'felhasznalo', 'rusaimarky@gmail.com'),
-(63, 'asd23', '7815696ecbf1c96e6894b779456d330e', 'profilkepek/patrick.jpg', 'felhasznalo', 'toth5845@mail.com');
+(40, 'admin', '7815696ecbf1c96e6894b779456d330e', 'kepek/alapkep.jpg', 'admin', 'toth5845@gmail.com'),
+(77, 'Syeda Avdotya', '7815696ecbf1c96e6894b779456d330e', 'profilkepek/alapkep.jpg', 'felhasznalo', 'unkan101@niko313.com'),
+(78, 'Ali Rini', '202cb962ac59075b964b07152d234b70', 'profilkepek/8cd65049bcdb0a71615dd57d4c75f362.jpg', 'felhasznalo', 'tonitonic@packiu.com'),
+(79, 'Voldemaras Wardell', '202cb962ac59075b964b07152d234b70', 'profilkepek/47878.png', 'felhasznalo', 'carnage123@pusatinfokita.com'),
+(80, 'Vilhjálmur Charlie', 'd95e4410070c4817c026259e6d1d86dc', 'profilkepek/alapkep.jpg', 'felhasznalo', 'eduarg190@gasss.net'),
+(81, 'Amator Euthymius', '7815696ecbf1c96e6894b779456d330e', 'profilkepek/alapkep.jpg', 'felhasznalo', 'akrij@greendike.com'),
+(82, 'Tarquinius Surya', 'ea7d201d1cdd240f3798b2dc51d6adcb', 'profilkepek/alapkep.jpg', 'felhasznalo', 'elenaseriogina@naverly.com'),
+(83, 'Sanyi Pisti', '38d7355701b6f3760ee49852904319c1', 'profilkepek/alapkep.jpg', 'felhasznalo', 'brianscott1@kumpulanmedia.com'),
+(84, 'Donát Sámuel', '146b65fd2004858b1c615bc8cf8b8a5b', 'profilkepek/patrick.jpg', 'felhasznalo', 'damnorman@niko313.com'),
+(85, 'Kincső Lúcia', '912ec803b2ce49e4a541068d495ab570', 'profilkepek/Kayle_2.jpg', 'felhasznalo', 'fenriz666@dexamail.com'),
+(86, 'Zita Kamilla', 'cf5c5662f49f76f9bbd776d77935b422', 'profilkepek/images.jpg', 'felhasznalo', 'topazlk@friendsack.com');
 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `foglalas`
+-- Table structure for table `foglalas`
 --
 
 CREATE TABLE `foglalas` (
@@ -85,12 +96,22 @@ CREATE TABLE `foglalas` (
   `mennyiseg` int(255) NOT NULL,
   `statusz` varchar(255) NOT NULL DEFAULT 'kerelem',
   `code` int(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `foglalas`
+--
+
+INSERT INTO `foglalas` (`foglalas_id`, `felhasznalo_id`, `esemeny_id`, `nev`, `email`, `elerhetoseg`, `mennyiseg`, `statusz`, `code`) VALUES
+(40, 0, 156, 'Rusai Márk ', 'rusai@gmail.com', 'Madách Imre út 5. fszt. Budapest magyar 1075 ', 35, 'elfogadva', 237514),
+(41, 0, 157, 'tóth oliver', 'toth5845@gmail.com', 'rév köz 6 szigetszentmiklós magyar 2310', 10, 'kerelem', 0),
+(161, 0, 158, '', '', '', 0, 'kerelem', 0),
+(166, 0, 157, 'Kiss Péter', 'peter5845@gmail.com', 'Bokréta u Budapest magyar 1094', 14, 'kerelem', 0);
 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `jegytipus`
+-- Table structure for table `jegytipus`
 --
 
 CREATE TABLE `jegytipus` (
@@ -98,21 +119,23 @@ CREATE TABLE `jegytipus` (
   `nev` varchar(255) NOT NULL,
   `tipus` varchar(255) NOT NULL,
   `ar` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- A tábla adatainak kiíratása `jegytipus`
+-- Dumping data for table `jegytipus`
 --
 
 INSERT INTO `jegytipus` (`jegy_id`, `nev`, `tipus`, `ar`) VALUES
-(90, '432', '342', 243),
-(91, 'wer', 'ewrq', 0),
-(92, 'felnőtjegy', 'felnötjegy', 3000);
+(100, 'felnőtjegy', 'felnőtjegy', 1500),
+(101, 'családijegy', 'családijegy', 5000),
+(102, 'gyerekjegy', 'gyerekjegy', 1000),
+(103, 'diákjegy', 'diákjegy', 1100),
+(104, 'Mindenkinek', 'Mindenkinek', 2000);
 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `tblproduct`
+-- Table structure for table `tblproduct`
 --
 
 CREATE TABLE `tblproduct` (
@@ -121,10 +144,10 @@ CREATE TABLE `tblproduct` (
   `code` varchar(255) NOT NULL,
   `image` text NOT NULL,
   `price` double(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- A tábla adatainak kiíratása `tblproduct`
+-- Dumping data for table `tblproduct`
 --
 
 INSERT INTO `tblproduct` (`id`, `name`, `code`, `image`, `price`) VALUES
@@ -133,72 +156,60 @@ INSERT INTO `tblproduct` (`id`, `name`, `code`, `image`, `price`) VALUES
 (3, 'we_go_to_the_galery', 'AGsz668', 'termek-kepek/we_go_to_the_galery.jpg', 2750.00);
 
 --
--- Indexek a kiírt táblákhoz
+-- Indexes for dumped tables
 --
 
 --
--- A tábla indexei `events`
+-- Indexes for table `events`
 --
 ALTER TABLE `events`
   ADD PRIMARY KEY (`id`);
 
 --
--- A tábla indexei `felhasznalok`
+-- Indexes for table `felhasznalok`
 --
 ALTER TABLE `felhasznalok`
   ADD PRIMARY KEY (`id`);
 
 --
--- A tábla indexei `foglalas`
+-- Indexes for table `foglalas`
 --
 ALTER TABLE `foglalas`
   ADD PRIMARY KEY (`foglalas_id`);
 
 --
--- A tábla indexei `jegytipus`
+-- Indexes for table `jegytipus`
 --
 ALTER TABLE `jegytipus`
   ADD PRIMARY KEY (`jegy_id`);
 
 --
--- A tábla indexei `tblproduct`
---
-ALTER TABLE `tblproduct`
-  ADD PRIMARY KEY (`id`);
-
---
--- A kiírt táblák AUTO_INCREMENT értéke
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT a táblához `events`
+-- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
 
 --
--- AUTO_INCREMENT a táblához `felhasznalok`
+-- AUTO_INCREMENT for table `felhasznalok`
 --
 ALTER TABLE `felhasznalok`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
--- AUTO_INCREMENT a táblához `foglalas`
+-- AUTO_INCREMENT for table `foglalas`
 --
 ALTER TABLE `foglalas`
-  MODIFY `foglalas_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `foglalas_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
 
 --
--- AUTO_INCREMENT a táblához `jegytipus`
+-- AUTO_INCREMENT for table `jegytipus`
 --
 ALTER TABLE `jegytipus`
-  MODIFY `jegy_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
-
---
--- AUTO_INCREMENT a táblához `tblproduct`
---
-ALTER TABLE `tblproduct`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `jegy_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

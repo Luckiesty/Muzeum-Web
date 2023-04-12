@@ -1,4 +1,4 @@
-const TrafficLight = require( "../../traffic" );
+const TrafficLight = require( "../traffic" );
 const assert = require( "assert" );
 describe( "TrafficLight", function () {
     describe( "colors", function () {

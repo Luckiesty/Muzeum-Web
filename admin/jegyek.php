@@ -221,24 +221,23 @@ if($('#nev').val() == "")
 {  
   
   $('#nev').css("border-color", "red");
-  a = 1;
  
 }
 if($('#tipus').val() == '')
 {  
  
     $('#tipus').css("border-color", "red");
-  a = 1;
+
 }
 if($('#ar').val() == '')  
 {  
   
   $('#ar').css("border-color", "red");
-  a = 1;
+  
 }  
 
-else if (a== 0){$("#insert_form").submit();}
-else (a == 1)
+else if (true){$("#insert_form").submit();}
+else (false)
 {  
   document.getElementById("myspan").innerHTML="Minden mező kitöltése kötelező";
   

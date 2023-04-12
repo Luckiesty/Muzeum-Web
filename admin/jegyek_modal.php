@@ -10,7 +10,7 @@ $id = $_GET['id'];
                     <span aria-hidden="true">×</span>
                     <span class="sr-only">Close</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">Jegyhozzáaddás</h4>
+                <h4 class="modal-title" id="myModalLabel">Jegyszerkesztése</h4>
             </div>
              
             <!-- Modal Body -->

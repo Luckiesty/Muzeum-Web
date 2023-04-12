@@ -1,10 +1,9 @@
-var szam =  3000;
 
 class TrafficLight {
     
 
     static get colors() {
-        
+        var szam = document.getElementById("ar").value;
         return szam;
     }
     

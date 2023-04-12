@@ -75,7 +75,7 @@ div {
 
 /* ===================================== jegyek ================================== */
 /* ===================================== tablak ================================== */
-.text {
+.text{
   display: block;
   width: 100px;
   overflow: hidden;
@@ -222,7 +222,7 @@ background-color: royalblue;
       }
       
       
-      .text {
+      .text2 {
           display: block;
 width: 100%;
 overflow: hidden;

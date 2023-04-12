@@ -7,7 +7,8 @@
 
 
       $kapcsolat = mysqli_connect("localhost", "root", "", "darkbluemoon");
-      $lekerdezes2 = mysqli_query($kapcsolat, "UPDATE felhasznalok SET neve='".$nevfris."',email='".$emailfris."',statusz='".$statuszfris."'WHERE id=".$id."");
+      $lekerdezes2 = mysqli_query($kapcsolat, "UPDATE felhasznalok 
+      SET neve='".$nevfris."',email='".$emailfris."',statusz='".$statuszfris."'WHERE id=".$id."");
       
       
       header("location: adminfelulet.php");

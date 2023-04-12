@@ -34,24 +34,29 @@ $lekerdezes = $kapcsolat->query("select * from events WHERE statusz != 'privat' 
                            <button type="submit" style="background-color:gray;  color:white;"> tudjmegtöbbet..</button>
                         </form>
                        ';
-                       $lekerdezes2 = $kapcsolat->query("select *,(ferohely- SUM(mennyiseg)) as 'maradek' from events INNER JOIN foglalas ON events.id=foglalas.esemeny_id WHERE events.id = ".$sor['id'].";");
+                       $lekerdezes2 = $kapcsolat->query("select *,(ferohely- SUM(mennyiseg)) as 'maradek' from events 
+                       INNER JOIN foglalas ON events.id=foglalas.esemeny_id WHERE events.id = ".$sor['id'].";");
                        $sor2 = $lekerdezes2->fetch_assoc();
-                       if(!$sor2['maradek']){
-                        $sor2['maradek'] = 0;
-                       }
+                       
+                      
                        $tartalom .='
                         <div>
-                        <p class="team-member-text" style=""><b> '.$sor['ferohely'].' / '.$sor2['maradek'].'  FÕ</b></p>  <p class="team-member-text" style=""><b>'.$sor['mikor'].'</b></p>
+                        <p class="team-member-text" style=""><b> '.$sor['ferohely'].' / '.$sor2['maradek'].'  FÕ</b>
+                        </p>  <p class="team-member-text" style=""><b>'.$sor['mikor'].'</b></p>
                         </div>
                         
                         
                             
                             <div class="arrow-embed w-embed">';
-                            if($sor['ferohely'] - $sor2['maradek'] == 0)
+                           
+                            if( $sor2['maradek'] == 0)
                             {
+                                
                                 $tartalom .='<div class="btn btn-outline-success" style="color:blue;" >Elkelt</div>'; 
                             }else
                             {
+                                $szam = $sor2['maradek'];
+                               
                             $tartalom .='
                             
                             <a  class="btn btn-outline-success" style="color:blue;"  href="jegy_varsalas_modal.php?id='.$sor['id'].'">
